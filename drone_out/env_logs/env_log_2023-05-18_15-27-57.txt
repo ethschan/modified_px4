@@ -1,0 +1,19 @@
+Episode | Reward  | Done Reason                         | Timestep Actions/Rewards
+E1      | -100.00 | collision                           | -z
+        |         |                                     | -100.00
+
+E2      | -100.00 | collision                           | -z
+        |         |                                     | -100.00
+
+E3      | -100.00 | collision                           | -z
+        |         |                                     | -100.00
+
+E4      | -100.00 | collision                           | +x
+        |         |                                     | -100.00
+
+E5      | -100.00 | collision                           | +y
+        |         |                                     | -100.00
+
+E6      | -100.00 | collision                           | +x
+        |         |                                     | -100.00
+

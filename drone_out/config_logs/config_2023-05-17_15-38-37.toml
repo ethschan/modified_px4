@@ -1,0 +1,41 @@
+[agent]
+verbose = 1
+
+[agent.test]
+verbose = 0
+
+[agent.dqn]
+buffer_size = 100000
+learning_starts = 10000
+
+[agent.ppo]
+
+[env]
+verbose = 0
+
+[env.test]
+verbose = 1
+
+[env.conditions]
+max_dist2path = 4.0
+max_speed = 2.0
+
+[env.rewards]
+path_dist_decay = 0.3
+speed_decay = 0.7
+
+[mode.evaluate]
+episodes = 20
+
+[mode.evaluate.test]
+episodes = 2
+
+[mode.train]
+eval_episodes = 5
+eval_frequency = 10000
+timesteps = 200000
+
+[mode.train.test]
+eval_episodes = 1
+eval_frequency = 5
+timesteps = 10

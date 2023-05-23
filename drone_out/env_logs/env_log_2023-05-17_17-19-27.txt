@@ -1,0 +1,2056 @@
+Episode | Reward  | Done Reason                         | Timestep Actions/Rewards
+E1      | 31.31   | too far from path                   | -z       -z       +0       +y       -y       -x       +y       -z       +0       -z       -z       +0       -y       +0       +0       +x       +0       +z       +z       +z       +z       -z       -z       +0       +0       -x       -x       -y       +0       +y       -x       -y       -z       +y       +x       +z       -y       -x       -y       -x       +0       +x
+        |         |                                     | -0.05    1.98     1.98     -1.08    1.39     1.38     1.40     1.25     1.26     1.18     1.15     1.15     1.20     1.20     1.19     -1.33    0.70     0.99     1.76     1.26     1.13     1.49     1.40     1.42     1.43     1.62     1.92     1.89     1.90     -0.28    0.73     0.96     0.77     1.00     1.11     1.15     1.17     -1.45    0.48     0.73     0.77     -10.00
+
+E2      | -6.44   | too far from path                   | +0       -x       +y       +z
+        |         |                                     | -0.00    1.91     1.65     -10.00
+
+E3      | -6.40   | too far from path                   | +0       +y       +y       +x
+        |         |                                     | -0.01    1.88     1.73     -10.00
+
+E4      | -8.38   | too far from path                   | -x       -y       -x
+        |         |                                     | -0.08    1.70     -10.00
+
+E5      | -8.48   | too far from path                   | +y       -y       -y
+        |         |                                     | -0.11    1.64     -10.00
+
+E6      | -6.52   | too far from path                   | -x       +0       +y       -x
+        |         |                                     | -0.09    1.91     1.65     -10.00
+
+E7      | -6.22   | too far from path                   | +x       +z       +z
+        |         |                                     | 1.91     1.86     -10.00
+
+E8      | -8.47   | too far from path                   | +x       +y       -y
+        |         |                                     | -0.09    1.62     -10.00
+
+E9      | -8.31   | too far from path                   | +x       +x       +x
+        |         |                                     | -0.09    1.77     -10.00
+
+E10     | -8.19   | too far from path                   | -x       +z       -x
+        |         |                                     | -0.09    1.90     -10.00
+
+E11     | -4.42   | too far from path                   | +y       +0       +z       +0       -z
+        |         |                                     | -0.11    1.88     1.91     1.91     -10.00
+
+E12     | -8.30   | too far from path                   | +x       -y       +z
+        |         |                                     | -0.02    1.72     -10.00
+
+E13     | -4.30   | too far from path                   | +0       -y       +0       -y       -x
+        |         |                                     | -0.04    1.95     1.95     1.84     -10.00
+
+E14     | -8.37   | too far from path                   | +x       -y       -z
+        |         |                                     | -0.09    1.72     -10.00
+
+E15     | -2.34   | too far from path                   | +0       -z       +0       +0       -y       +y
+        |         |                                     | -0.00    1.98     1.98     1.98     1.73     -10.00
+
+E16     | -8.43   | too far from path                   | -x       +y       -z
+        |         |                                     | -0.08    1.65     -10.00
+
+E17     | -8.34   | too far from path                   | -z       +x       -z
+        |         |                                     | -0.03    1.69     -10.00
+
+E18     | -6.33   | too far from path                   | +0       -x       -x       -y
+        |         |                                     | -0.00    1.91     1.76     -10.00
+
+E19     | -4.73   | too far from path                   | +x       +x       +0       +0       +y
+        |         |                                     | -0.09    1.78     1.79     1.79     -10.00
+
+E20     | -6.37   | too far from path                   | -z       +0       +x       +y
+        |         |                                     | -0.03    1.97     1.70     -10.00
+
+E21     | -6.36   | too far from path                   | +0       -z       -x       -z
+        |         |                                     | -0.01    1.97     1.68     -10.00
+
+E22     | -6.10   | too far from path                   | +0       +z       -z       -y
+        |         |                                     | -0.00    1.97     1.94     -10.00
+
+E23     | -8.37   | too far from path                   | +x       -y       -z
+        |         |                                     | -0.09    1.72     -10.00
+
+E24     | -8.09   | too far from path                   | -z       +z       +y
+        |         |                                     | -0.03    1.95     -10.00
+
+E25     | -8.10   | too far from path                   | +z       +z       -z
+        |         |                                     | -0.03    1.93     -10.00
+
+E26     | -4.50   | too far from path                   | +y       +0       +0       +z       -x
+        |         |                                     | -0.11    1.88     1.88     1.85     -10.00
+
+E27     | -6.35   | too far from path                   | +z       +x       -z
+        |         |                                     | 1.97     1.68     -10.00
+
+E28     | -8.10   | too far from path                   | +z       +z       +z
+        |         |                                     | -0.03    1.93     -10.00
+
+E29     | -8.10   | too far from path                   | +z       -z       -z
+        |         |                                     | -0.04    1.94     -10.00
+
+E30     | -8.47   | too far from path                   | -x       +x       -y
+        |         |                                     | -0.08    1.61     -10.00
+
+E31     | -8.38   | too far from path                   | -z       +y       -y
+        |         |                                     | -0.03    1.65     -10.00
+
+E32     | -4.43   | too far from path                   | +0       +z       +0       +y       +y
+        |         |                                     | -0.01    1.97     1.97     1.65     -10.00
+
+E33     | -8.38   | too far from path                   | -y       +x       +y
+        |         |                                     | -0.04    1.66     -10.00
+
+E34     | -8.09   | too far from path                   | -z       +z       -z
+        |         |                                     | -0.03    1.94     -10.00
+
+E35     | -8.31   | too far from path                   | -z       -y       -z
+        |         |                                     | -0.03    1.73     -10.00
+
+E36     | -6.40   | too far from path                   | +0       -y       +x       +y
+        |         |                                     | -0.00    1.95     1.65     -10.00
+
+E37     | -4.71   | too far from path                   | -z       +0       -x       +0       +x
+        |         |                                     | -0.03    1.97     1.68     1.68     -10.00
+
+E38     | -4.25   | too far from path                   | -y       +0       -z       -z
+        |         |                                     | 1.96     1.96     1.84     -10.00
+
+E39     | -8.19   | too far from path                   | -x       +z       -z
+        |         |                                     | -0.09    1.90     -10.00
+
+E40     | -8.20   | too far from path                   | -y       +z       +z
+        |         |                                     | -0.04    1.85     -10.00
+
+E41     | -8.18   | too far from path                   | -x       -z       -x
+        |         |                                     | -0.08    1.91     -10.00
+
+E42     | -6.51   | too far from path                   | +0       +x       +y       +x
+        |         |                                     | -0.03    1.91     1.62     -10.00
+
+E43     | -8.39   | too far from path                   | -z       +y       +x
+        |         |                                     | -0.04    1.65     -10.00
+
+E44     | -8.38   | too far from path                   | +y       +y       -x
+        |         |                                     | -0.12    1.74     -10.00
+
+E45     | -4.72   | too far from path                   | +0       -y       -x       +0       -x
+        |         |                                     | -0.00    1.95     1.66     1.67     -10.00
+
+E46     | -8.09   | too far from path                   | -z       +z       -y
+        |         |                                     | -0.03    1.94     -10.00
+
+E47     | -4.27   | too far from path                   | +0       +x       +z       -z
+        |         |                                     | 1.97     1.91     1.85     -10.00
+
+E48     | -8.39   | too far from path                   | -x       -y       +x
+        |         |                                     | -0.08    1.70     -10.00
+
+E49     | -8.31   | too far from path                   | -z       -y       +x
+        |         |                                     | -0.03    1.72     -10.00
+
+E50     | -8.48   | too far from path                   | -y       +y       +x
+        |         |                                     | -0.04    1.56     -10.00
+
+E51     | -8.38   | too far from path                   | -y       -x       -z
+        |         |                                     | -0.05    1.66     -10.00
+
+E52     | -8.38   | too far from path                   | +y       +y       +x
+        |         |                                     | -0.11    1.73     -10.00
+
+E53     | -8.21   | too far from path                   | +x       -z       -y
+        |         |                                     | -0.09    1.88     -10.00
+
+E54     | -8.31   | too far from path                   | +x       +x       +x
+        |         |                                     | -0.09    1.78     -10.00
+
+E55     | -8.37   | too far from path                   | +z       -x       +y
+        |         |                                     | -0.03    1.66     -10.00
+
+E56     | -6.45   | too far from path                   | +0       -x       +y       -z
+        |         |                                     | -0.00    1.91     1.64     -10.00
+
+E57     | -6.49   | too far from path                   | +0       -y       +y       -y
+        |         |                                     | -0.01    1.95     1.57     -10.00
+
+E58     | -6.53   | too far from path                   | +x       +x       +0       +z
+        |         |                                     | -0.09    1.77     1.78     -10.00
+
+E59     | -8.37   | too far from path                   | +x       -y       -z
+        |         |                                     | -0.09    1.72     -10.00
+
+E60     | -8.45   | too far from path                   | +y       -x       -y
+        |         |                                     | -0.11    1.66     -10.00
+
+E61     | -8.22   | too far from path                   | -y       -y       -y
+        |         |                                     | -0.04    1.82     -10.00
+
+E62     | -8.33   | too far from path                   | -x       -x       -y
+        |         |                                     | -0.08    1.76     -10.00
+
+E63     | -8.17   | too far from path                   | +y       -z       -x
+        |         |                                     | -0.11    1.94     -10.00
+
+E64     | -6.22   | too far from path                   | -y       -y       -z
+        |         |                                     | 1.96     1.82     -10.00
+
+E65     | -8.09   | too far from path                   | -z       +z       +x
+        |         |                                     | -0.03    1.94     -10.00
+
+E66     | -8.38   | too far from path                   | -x       -y       -x
+        |         |                                     | -0.09    1.70     -10.00
+
+E67     | -4.41   | too far from path                   | +z       +0       +0       +x       +z
+        |         |                                     | -0.03    1.96     1.96     1.69     -10.00
+
+E68     | -4.92   | too far from path                   | +y       +0       -x       +0       +x
+        |         |                                     | -0.11    1.88     1.65     1.66     -10.00
+
+E69     | -6.10   | too far from path                   | +z       +z       +z
+        |         |                                     | 1.97     1.93     -10.00
+
+E70     | -8.31   | too far from path                   | -x       -x       +y
+        |         |                                     | -0.08    1.77     -10.00
+
+E71     | -6.34   | too far from path                   | -y       +z       +0       +x
+        |         |                                     | -0.04    1.85     1.85     -10.00
+
+E72     | -8.19   | too far from path                   | -y       -z       -x
+        |         |                                     | -0.05    1.86     -10.00
+
+E73     | -8.37   | too far from path                   | +y       +y       +z
+        |         |                                     | -0.11    1.74     -10.00
+
+E74     | -4.26   | too far from path                   | +0       +0       -x       +z       -x
+        |         |                                     | -0.03    1.97     1.90     1.91     -10.00
+
+E75     | -4.44   | too far from path                   | +x       +0       +0       -z       +z
+        |         |                                     | -0.09    1.91     1.91     1.83     -10.00
+
+E76     | -6.14   | too far from path                   | -z       +z       +0       -x
+        |         |                                     | -0.03    1.95     1.95     -10.00
+
+E77     | -6.10   | too far from path                   | +0       -z       +z       +y
+        |         |                                     | -0.01    1.97     1.94     -10.00
+
+E78     | -8.33   | too far from path                   | -x       -x       +y
+        |         |                                     | -0.08    1.75     -10.00
+
+E79     | -8.49   | too far from path                   | +y       -y       +z
+        |         |                                     | -0.11    1.62     -10.00
+
+E80     | -6.36   | too far from path                   | +x       +0       +x       -x
+        |         |                                     | -0.09    1.91     1.81     -10.00
+
+E81     | -8.18   | too far from path                   | -x       -z       -z
+        |         |                                     | -0.08    1.91     -10.00
+
+E82     | -8.36   | too far from path                   | -z       -x       -y
+        |         |                                     | -0.03    1.68     -10.00
+
+E83     | -8.49   | too far from path                   | -y       +y       +x
+        |         |                                     | -0.05    1.56     -10.00
+
+E84     | -8.23   | too far from path                   | +x       +z       -z
+        |         |                                     | -0.09    1.86     -10.00
+
+E85     | -8.18   | too far from path                   | -x       -z       -z
+        |         |                                     | -0.09    1.91     -10.00
+
+E86     | -8.51   | too far from path                   | +x       -x       +y
+        |         |                                     | -0.09    1.58     -10.00
+
+E87     | -8.18   | too far from path                   | -x       -z       +z
+        |         |                                     | -0.09    1.90     -10.00
+
+E88     | -8.47   | too far from path                   | +y       -y       +z
+        |         |                                     | -0.11    1.64     -10.00
+
+E89     | -8.34   | too far from path                   | +z       +x       -y
+        |         |                                     | -0.03    1.69     -10.00
+
+E90     | -8.35   | too far from path                   | +z       +x       +x
+        |         |                                     | -0.03    1.68     -10.00
+
+E91     | -8.41   | too far from path                   | +y       +x       -z
+        |         |                                     | -0.11    1.70     -10.00
+
+E92     | -6.18   | too far from path                   | -x       -z       +y
+        |         |                                     | 1.92     1.91     -10.00
+
+E93     | -6.48   | too far from path                   | +0       +y       -y       -y
+        |         |                                     | -0.00    1.88     1.64     -10.00
+
+E94     | -8.18   | too far from path                   | +y       +z       +z
+        |         |                                     | -0.12    1.94     -10.00
+
+E95     | -8.09   | too far from path                   | -z       -z       -z
+        |         |                                     | -0.04    1.94     -10.00
+
+E96     | -8.32   | too far from path                   | -x       -x       -x
+        |         |                                     | -0.08    1.76     -10.00
+
+E97     | -6.38   | too far from path                   | +z       +0       +x       -y
+        |         |                                     | -0.03    1.97     1.69     -10.00
+
+E98     | -6.74   | too far from path                   | +z       +y       +0       -z
+        |         |                                     | -0.03    1.64     1.65     -10.00
+
+E99     | -4.84   | too far from path                   | +x       +y       +0       -z
+        |         |                                     | 1.91     1.62     1.63     -10.00
+
+E100    | -8.21   | too far from path                   | +x       -z       -y
+        |         |                                     | -0.09    1.88     -10.00
+
+E101    | -8.38   | too far from path                   | -y       +x       +x
+        |         |                                     | -0.04    1.66     -10.00
+
+E102    | -8.39   | too far from path                   | -y       -x       -x
+        |         |                                     | -0.05    1.65     -10.00
+
+E103    | -6.36   | too far from path                   | +x       +0       +x       -z
+        |         |                                     | -0.09    1.91     1.81     -10.00
+
+E104    | -8.36   | too far from path                   | -z       -x       +z
+        |         |                                     | -0.03    1.67     -10.00
+
+E105    | -6.35   | too far from path                   | -z       +0       -y       -y
+        |         |                                     | -0.03    1.97     1.72     -10.00
+
+E106    | -8.45   | too far from path                   | +y       -x       +z
+        |         |                                     | -0.11    1.66     -10.00
+
+E107    | -8.43   | too far from path                   | -x       +y       +x
+        |         |                                     | -0.08    1.65     -10.00
+
+E108    | -8.35   | too far from path                   | -z       +x       -y
+        |         |                                     | -0.04    1.69     -10.00
+
+E109    | -8.39   | too far from path                   | -y       +x       -z
+        |         |                                     | -0.04    1.66     -10.00
+
+E110    | -4.46   | too far from path                   | +0       -x       +y       -y
+        |         |                                     | 1.98     1.91     1.65     -10.00
+
+E111    | -8.50   | too far from path                   | +x       -x       -z
+        |         |                                     | -0.09    1.59     -10.00
+
+E112    | -8.41   | too far from path                   | +y       +x       -x
+        |         |                                     | -0.11    1.70     -10.00
+
+E113    | -6.12   | too far from path                   | +z       +0       +z       +z
+        |         |                                     | -0.03    1.96     1.95     -10.00
+
+E114    | -6.38   | too far from path                   | -x       +0       -x       -x
+        |         |                                     | -0.09    1.91     1.80     -10.00
+
+E115    | -4.54   | too far from path                   | +y       +0       +x       -z
+        |         |                                     | 1.88     1.88     1.70     -10.00
+
+E116    | -8.36   | too far from path                   | +z       -x       -z
+        |         |                                     | -0.03    1.67     -10.00
+
+E117    | -8.41   | too far from path                   | +y       +x       +z
+        |         |                                     | -0.11    1.70     -10.00
+
+E118    | -8.15   | too far from path                   | -y       -z       +y
+        |         |                                     | -0.02    1.87     -10.00
+
+E119    | -5.33   | too far from path                   | -y       +y       +0       +0       -y
+        |         |                                     | -0.05    1.57     1.57     1.58     -10.00
+
+E120    | -8.23   | too far from path                   | +x       +z       -y
+        |         |                                     | -0.09    1.86     -10.00
+
+E121    | -6.33   | too far from path                   | +y       +0       -z       +x
+        |         |                                     | -0.12    1.88     1.90     -10.00
+
+E122    | -8.45   | too far from path                   | +y       -x       -y
+        |         |                                     | -0.11    1.66     -10.00
+
+E123    | -8.41   | too far from path                   | +y       +x       -x
+        |         |                                     | -0.11    1.70     -10.00
+
+E124    | -8.09   | too far from path                   | -z       +z       -x
+        |         |                                     | -0.03    1.95     -10.00
+
+E125    | -8.38   | too far from path                   | +y       +y       +y
+        |         |                                     | -0.11    1.73     -10.00
+
+E126    | -8.20   | too far from path                   | +y       +z       -z
+        |         |                                     | -0.11    1.92     -10.00
+
+E127    | -6.34   | too far from path                   | +x       +0       +z       -y
+        |         |                                     | -0.09    1.91     1.85     -10.00
+
+E128    | -6.43   | too far from path                   | +0       +0       -y       -x       +x
+        |         |                                     | -0.01    -0.01    1.94     1.66     -10.00
+
+E129    | 1.27    | too far from path                   | -y       +0       +0       +0       -z       +0       +0       -z
+        |         |                                     | -0.04    1.96     1.96     1.96     1.81     1.81     1.82     -10.00
+
+E130    | -8.31   | too far from path                   | -z       -y       -z
+        |         |                                     | -0.03    1.72     -10.00
+
+E131    | -8.37   | too far from path                   | +z       -x       +y
+        |         |                                     | -0.03    1.66     -10.00
+
+E132    | -8.09   | too far from path                   | -z       -z       -x
+        |         |                                     | -0.03    1.95     -10.00
+
+E133    | -8.09   | too far from path                   | -z       -z       +y
+        |         |                                     | -0.03    1.94     -10.00
+
+E134    | -8.23   | too far from path                   | -y       -y       -x
+        |         |                                     | -0.05    1.81     -10.00
+
+E135    | -4.37   | too far from path                   | +x       +z       +0       +0       -z
+        |         |                                     | -0.03    1.89     1.89     1.88     -10.00
+
+E136    | -8.38   | too far from path                   | -z       +y       -z
+        |         |                                     | -0.03    1.65     -10.00
+
+E137    | -8.36   | too far from path                   | -z       -x       +x
+        |         |                                     | -0.03    1.67     -10.00
+
+E138    | -8.11   | too far from path                   | -x       -z       -y
+        |         |                                     | -0.03    1.91     -10.00
+
+E139    | -6.10   | too far from path                   | +0       +z       -z       +y
+        |         |                                     | -0.00    1.97     1.93     -10.00
+
+E140    | -6.40   | too far from path                   | +0       -x       -y       -z
+        |         |                                     | -0.00    1.91     1.70     -10.00
+
+E141    | -8.20   | too far from path                   | +y       +z       +y
+        |         |                                     | -0.11    1.92     -10.00
+
+E142    | -4.41   | too far from path                   | +0       +0       -y       -x       -x
+        |         |                                     | -0.00    2.00     1.94     1.65     -10.00
+
+E143    | -8.09   | too far from path                   | -z       +z       -x
+        |         |                                     | -0.03    1.95     -10.00
+
+E144    | -4.80   | too far from path                   | -x       +0       -y       +0       +x
+        |         |                                     | -0.09    1.91     1.68     1.69     -10.00
+
+E145    | -8.39   | too far from path                   | +z       +y       +y
+        |         |                                     | -0.03    1.64     -10.00
+
+E146    | -8.19   | too far from path                   | -y       -z       +x
+        |         |                                     | -0.05    1.86     -10.00
+
+E147    | -6.49   | too far from path                   | +0       -x       +x       +z
+        |         |                                     | -0.01    1.91     1.60     -10.00
+
+E148    | -8.30   | too far from path                   | +z       -y       +z
+        |         |                                     | -0.03    1.73     -10.00
+
+E149    | -8.39   | too far from path                   | -y       +x       -x
+        |         |                                     | -0.04    1.66     -10.00
+
+E150    | -6.55   | too far from path                   | +x       +0       +y       +x
+        |         |                                     | -0.08    1.91     1.62     -10.00
+
+E151    | -8.09   | too far from path                   | -z       -z       +x
+        |         |                                     | -0.03    1.95     -10.00
+
+E152    | -8.35   | too far from path                   | +z       +x       +x
+        |         |                                     | -0.03    1.69     -10.00
+
+E153    | -8.34   | too far from path                   | -x       -y       +x
+        |         |                                     | -0.06    1.72     -10.00
+
+E154    | -8.39   | too far from path                   | -z       +y       +z
+        |         |                                     | -0.03    1.65     -10.00
+
+E155    | -8.10   | too far from path                   | +z       -z       +x
+        |         |                                     | -0.03    1.93     -10.00
+
+E156    | -2.47   | too far from path                   | +0       +x       -z       +0       +0       +x
+        |         |                                     | -0.01    1.90     1.88     1.88     1.88     -10.00
+
+E157    | -8.18   | too far from path                   | -x       -z       -z
+        |         |                                     | -0.08    1.91     -10.00
+
+E158    | -8.48   | too far from path                   | -y       +y       +z
+        |         |                                     | -0.04    1.56     -10.00
+
+E159    | -8.22   | too far from path                   | +x       -z       -z
+        |         |                                     | -0.09    1.87     -10.00
+
+E160    | -8.32   | too far from path                   | -x       -x       -x
+        |         |                                     | -0.08    1.76     -10.00
+
+E161    | -8.19   | too far from path                   | -y       +z       -y
+        |         |                                     | -0.05    1.85     -10.00
+
+E162    | -6.54   | too far from path                   | -y       +0       +y       +y
+        |         |                                     | -0.04    1.96     1.54     -10.00
+
+E163    | -8.36   | too far from path                   | +z       -x       +y
+        |         |                                     | -0.03    1.67     -10.00
+
+E164    | -6.37   | too far from path                   | +0       -z       -x       +z
+        |         |                                     | -0.01    1.97     1.68     -10.00
+
+E165    | -8.08   | too far from path                   | -z       +z       -z
+        |         |                                     | -0.03    1.95     -10.00
+
+E166    | 3.50    | too far from path                   | +0       +0       +0       +0       -y       +0       -x       -z
+        |         |                                     | 1.99     1.99     1.99     1.99     1.93     1.93     1.66     -10.00
+
+E167    | -6.68   | too far from path                   | +z       -x       +0       -y
+        |         |                                     | -0.03    1.67     1.68     -10.00
+
+E168    | -6.29   | too far from path                   | -x       +z       +0       +x
+        |         |                                     | -0.09    1.90     1.90     -10.00
+
+E169    | -8.39   | too far from path                   | -x       -y       -x
+        |         |                                     | -0.09    1.70     -10.00
+
+E170    | -8.46   | too far from path                   | +x       +y       -x
+        |         |                                     | -0.09    1.62     -10.00
+
+E171    | -8.21   | too far from path                   | +x       -z       +z
+        |         |                                     | -0.09    1.87     -10.00
+
+E172    | -6.47   | too far from path                   | +0       +y       -x       -y
+        |         |                                     | -0.01    1.88     1.65     -10.00
+
+E173    | -8.35   | too far from path                   | +z       -x       +x
+        |         |                                     | -0.03    1.68     -10.00
+
+E174    | -8.32   | too far from path                   | +x       +x       -z
+        |         |                                     | -0.09    1.77     -10.00
+
+E175    | -8.23   | too far from path                   | -y       -y       +y
+        |         |                                     | -0.05    1.82     -10.00
+
+E176    | -8.40   | too far from path                   | +z       +y       +y
+        |         |                                     | -0.03    1.63     -10.00
+
+E177    | -8.23   | too far from path                   | -y       -y       +z
+        |         |                                     | -0.05    1.82     -10.00
+
+E178    | -6.36   | too far from path                   | +x       +0       +x       -y
+        |         |                                     | -0.09    1.91     1.82     -10.00
+
+E179    | -8.37   | too far from path                   | +y       +y       +z
+        |         |                                     | -0.11    1.74     -10.00
+
+E180    | -8.32   | too far from path                   | -x       -x       -z
+        |         |                                     | -0.08    1.76     -10.00
+
+E181    | -8.10   | too far from path                   | +z       -z       +y
+        |         |                                     | -0.03    1.94     -10.00
+
+E182    | -4.20   | too far from path                   | +0       +0       -x       -z       +x
+        |         |                                     | -0.01    1.99     1.90     1.91     -10.00
+
+E183    | -6.32   | too far from path                   | +x       +0       -z       -x
+        |         |                                     | -0.09    1.91     1.85     -10.00
+
+E184    | -8.41   | too far from path                   | +y       +x       +y
+        |         |                                     | -0.12    1.70     -10.00
+
+E185    | -8.45   | too far from path                   | +y       -x       +z
+        |         |                                     | -0.11    1.67     -10.00
+
+E186    | -6.54   | too far from path                   | -x       -x       +0       +y
+        |         |                                     | -0.08    1.77     1.77     -10.00
+
+E187    | -4.77   | too far from path                   | +x       +0       -y       +0       -x
+        |         |                                     | -0.09    1.91     1.70     1.71     -10.00
+
+E188    | -6.42   | too far from path                   | +0       +y       +x       -y
+        |         |                                     | -0.01    1.88     1.71     -10.00
+
+E189    | -8.50   | too far from path                   | +x       -x       -z
+        |         |                                     | -0.09    1.59     -10.00
+
+E190    | -6.62   | too far from path                   | +y       +y       +0       -y
+        |         |                                     | -0.11    1.74     1.75     -10.00
+
+E191    | -6.34   | too far from path                   | +y       +0       -z       -y
+        |         |                                     | -0.11    1.89     1.89     -10.00
+
+E192    | -8.45   | too far from path                   | +y       -x       -x
+        |         |                                     | -0.11    1.66     -10.00
+
+E193    | -6.63   | too far from path                   | +x       -y       +0       +x
+        |         |                                     | -0.09    1.73     1.73     -10.00
+
+E194    | -8.19   | too far from path                   | -y       +z       +y
+        |         |                                     | -0.04    1.85     -10.00
+
+E195    | -6.59   | too far from path                   | -z       -y       +0       +z
+        |         |                                     | -0.03    1.72     1.72     -10.00
+
+E196    | -8.10   | too far from path                   | +z       +z       +z
+        |         |                                     | -0.03    1.93     -10.00
+
+E197    | -6.49   | too far from path                   | +0       +y       -y       -z
+        |         |                                     | -0.01    1.88     1.64     -10.00
+
+E198    | -4.38   | too far from path                   | +0       +0       +z       +x       -z
+        |         |                                     | -0.02    1.98     1.96     1.69     -10.00
+
+E199    | -8.41   | too far from path                   | +x       +y       +y
+        |         |                                     | -0.04    1.63     -10.00
+
+E200    | -8.46   | too far from path                   | +x       +y       -y
+        |         |                                     | -0.09    1.62     -10.00
+
+E201    | -8.43   | too far from path                   | -x       +y       -x
+        |         |                                     | -0.08    1.65     -10.00
+
+E202    | -8.18   | too far from path                   | +y       -z       -y
+        |         |                                     | -0.12    1.94     -10.00
+
+E203    | -8.46   | too far from path                   | +x       +y       +y
+        |         |                                     | -0.09    1.63     -10.00
+
+E204    | -8.23   | too far from path                   | +x       +z       +x
+        |         |                                     | -0.09    1.86     -10.00
+
+E205    | -6.50   | too far from path                   | +0       -x       +x       +y
+        |         |                                     | -0.02    1.91     1.61     -10.00
+
+E206    | -8.48   | too far from path                   | +y       -y       +x
+        |         |                                     | -0.11    1.64     -10.00
+
+E207    | -4.52   | too far from path                   | +0       +0       -y       +y       -y
+        |         |                                     | -0.01    1.99     1.94     1.56     -10.00
+
+E208    | -6.34   | too far from path                   | +x       +0       -z       +x
+        |         |                                     | -0.09    1.91     1.85     -10.00
+
+E209    | -6.67   | too far from path                   | -x       -y       +0       +x
+        |         |                                     | -0.09    1.71     1.71     -10.00
+
+E210    | -8.39   | too far from path                   | -y       +x       -y
+        |         |                                     | -0.05    1.65     -10.00
+
+E211    | -6.50   | too far from path                   | +0       -y       +y       +z
+        |         |                                     | -0.01    1.95     1.56     -10.00
+
+E212    | -8.36   | too far from path                   | -z       -x       +y
+        |         |                                     | -0.03    1.67     -10.00
+
+E213    | -8.20   | too far from path                   | -y       +z       +y
+        |         |                                     | -0.05    1.85     -10.00
+
+E214    | -8.22   | too far from path                   | +x       -z       +y
+        |         |                                     | -0.09    1.87     -10.00
+
+E215    | -6.46   | too far from path                   | -y       +0       +x       -x
+        |         |                                     | -0.05    1.95     1.64     -10.00
+
+E216    | -6.32   | too far from path                   | +0       +x       +x       +z
+        |         |                                     | -0.01    1.91     1.78     -10.00
+
+E217    | -4.59   | too far from path                   | -x       +0       +0       -y       +y
+        |         |                                     | -0.09    1.91     1.91     1.67     -10.00
+
+E218    | -2.42   | too far from path                   | +0       +0       +0       +z       +y       +y
+        |         |                                     | -0.01    1.99     1.99     1.96     1.64     -10.00
+
+E219    | -8.31   | too far from path                   | +x       +x       -z
+        |         |                                     | -0.09    1.78     -10.00
+
+E220    | -0.20   | too far from path                   | +0       -y       +y       +0       +0       +0       +0       -x
+        |         |                                     | -0.00    1.95     1.56     1.57     1.57     1.58     1.58     -10.00
+
+E221    | -4.34   | too far from path                   | +0       +x       -z       +0       +y
+        |         |                                     | -0.00    1.91     1.88     1.88     -10.00
+
+E222    | -6.29   | too far from path                   | -x       +0       -z       -x
+        |         |                                     | -0.09    1.91     1.88     -10.00
+
+E223    | -8.39   | too far from path                   | +z       +y       -y
+        |         |                                     | -0.03    1.64     -10.00
+
+E224    | -6.35   | too far from path                   | +x       +z       +0       -y
+        |         |                                     | -0.09    1.87     1.87     -10.00
+
+E225    | -6.51   | too far from path                   | +0       +x       -x       +x
+        |         |                                     | -0.00    1.91     1.58     -10.00
+
+E226    | -4.70   | too far from path                   | +z       +0       -x       +0       +z
+        |         |                                     | -0.03    1.97     1.68     1.69     -10.00
+
+E227    | -8.10   | too far from path                   | +z       +z       -y
+        |         |                                     | -0.03    1.93     -10.00
+
+E228    | -2.59   | too far from path                   | +0       +0       -z       -y       +0       -z
+        |         |                                     | -0.01    1.99     1.97     1.73     1.73     -10.00
+
+E229    | -8.19   | too far from path                   | -y       -z       +x
+        |         |                                     | -0.04    1.86     -10.00
+
+E230    | -8.10   | too far from path                   | +z       -z       -y
+        |         |                                     | -0.04    1.94     -10.00
+
+E231    | -6.73   | too far from path                   | -y       +x       +0       -x
+        |         |                                     | -0.05    1.65     1.66     -10.00
+
+E232    | -6.19   | too far from path                   | +0       +y       -z       -y
+        |         |                                     | -0.01    1.88     1.94     -10.00
+
+E233    | -8.17   | too far from path                   | -x       -z       +x
+        |         |                                     | -0.08    1.91     -10.00
+
+E234    | -8.48   | too far from path                   | +y       -y       +y
+        |         |                                     | -0.12    1.64     -10.00
+
+E235    | -8.38   | too far from path                   | -x       -y       +y
+        |         |                                     | -0.08    1.70     -10.00
+
+E236    | -8.34   | too far from path                   | -z       +x       -y
+        |         |                                     | -0.03    1.69     -10.00
+
+E237    | -6.32   | too far from path                   | +0       -z       -y       -z
+        |         |                                     | -0.01    1.97     1.72     -10.00
+
+E238    | -6.54   | too far from path                   | +x       +x       +0       +x
+        |         |                                     | -0.09    1.77     1.77     -10.00
+
+E239    | -8.47   | too far from path                   | -y       +y       -z
+        |         |                                     | -0.05    1.58     -10.00
+
+E240    | -8.35   | too far from path                   | -z       +x       -x
+        |         |                                     | -0.03    1.69     -10.00
+
+E241    | -8.45   | too far from path                   | +y       -x       +z
+        |         |                                     | -0.11    1.66     -10.00
+
+E242    | -8.34   | too far from path                   | -z       +x       +y
+        |         |                                     | -0.03    1.69     -10.00
+
+E243    | -6.30   | too far from path                   | -y       -z       +0       -z
+        |         |                                     | -0.05    1.87     1.87     -10.00
+
+E244    | -8.36   | too far from path                   | -z       -x       -x
+        |         |                                     | -0.03    1.67     -10.00
+
+E245    | -6.33   | too far from path                   | +0       +x       +x       -x
+        |         |                                     | -0.01    1.91     1.77     -10.00
+
+E246    | -6.08   | too far from path                   | -z       -z       +z
+        |         |                                     | 1.97     1.95     -10.00
+
+E247    | -6.54   | too far from path                   | +x       +x       +0       +y
+        |         |                                     | -0.09    1.77     1.77     -10.00
+
+E248    | -8.32   | too far from path                   | -x       -x       -x
+        |         |                                     | -0.08    1.76     -10.00
+
+E249    | -4.42   | too far from path                   | -x       +0       +z       +0       -x
+        |         |                                     | -0.09    1.91     1.88     1.88     -10.00
+
+E250    | -6.32   | too far from path                   | +0       -x       -x       +x
+        |         |                                     | -0.01    1.91     1.77     -10.00
+
+E251    | -8.23   | too far from path                   | -y       -y       +x
+        |         |                                     | -0.05    1.82     -10.00
+
+E252    | -8.30   | too far from path                   | +z       -y       -z
+        |         |                                     | -0.03    1.73     -10.00
+
+E253    | -8.38   | too far from path                   | -x       -y       -x
+        |         |                                     | -0.09    1.70     -10.00
+
+E254    | -8.47   | too far from path                   | -x       +x       +y
+        |         |                                     | -0.09    1.61     -10.00
+
+E255    | -4.59   | too far from path                   | +0       +y       +0       -x       -x
+        |         |                                     | -0.01    1.88     1.88     1.65     -10.00
+
+E256    | -8.50   | too far from path                   | +x       -x       +y
+        |         |                                     | -0.09    1.59     -10.00
+
+E257    | -6.19   | too far from path                   | +0       -x       -z       -z
+        |         |                                     | -0.01    1.91     1.91     -10.00
+
+E258    | -8.41   | too far from path                   | +y       +x       +y
+        |         |                                     | -0.12    1.71     -10.00
+
+E259    | -8.48   | too far from path                   | +x       +y       +y
+        |         |                                     | -0.09    1.61     -10.00
+
+E260    | -8.35   | too far from path                   | -z       +x       +z
+        |         |                                     | -0.03    1.68     -10.00
+
+E261    | -6.67   | too far from path                   | -z       -x       +0       +z
+        |         |                                     | -0.03    1.68     1.69     -10.00
+
+E262    | -6.24   | too far from path                   | +0       +x       +z       +z
+        |         |                                     | -0.01    1.91     1.86     -10.00
+
+E263    | -4.68   | too far from path                   | +0       -z       -x       +0       -x
+        |         |                                     | -0.01    1.96     1.68     1.69     -10.00
+
+E264    | -6.74   | too far from path                   | -y       +x       +0       +x
+        |         |                                     | -0.05    1.65     1.66     -10.00
+
+E265    | -8.21   | too far from path                   | -y       +z       +y
+        |         |                                     | -0.05    1.84     -10.00
+
+E266    | -8.38   | too far from path                   | -y       -x       +y
+        |         |                                     | -0.04    1.66     -10.00
+
+E267    | -8.38   | too far from path                   | +y       +x       +y
+        |         |                                     | -0.08    1.70     -10.00
+
+E268    | -8.18   | too far from path                   | -x       -z       +y
+        |         |                                     | -0.08    1.90     -10.00
+
+E269    | -8.39   | too far from path                   | -y       +x       -y
+        |         |                                     | -0.05    1.66     -10.00
+
+E270    | -8.38   | too far from path                   | +y       +y       -z
+        |         |                                     | -0.12    1.73     -10.00
+
+E271    | -8.22   | too far from path                   | +x       +z       +y
+        |         |                                     | -0.09    1.86     -10.00
+
+E272    | -8.09   | too far from path                   | -z       +z       +x
+        |         |                                     | -0.03    1.95     -10.00
+
+E273    | -8.40   | too far from path                   | +y       +y       -x
+        |         |                                     | -0.11    1.71     -10.00
+
+E274    | -6.17   | too far from path                   | +z       -z       +0       +x
+        |         |                                     | -0.03    1.93     1.93     -10.00
+
+E275    | -6.32   | too far from path                   | +0       +z       -y       -y
+        |         |                                     | -0.01    1.97     1.73     -10.00
+
+E276    | -6.39   | too far from path                   | -x       +0       -x       -x
+        |         |                                     | -0.09    1.91     1.79     -10.00
+
+E277    | -8.09   | too far from path                   | -z       +z       +y
+        |         |                                     | -0.03    1.95     -10.00
+
+E278    | -5.03   | too far from path                   | +y       +0       -y       +0       -z
+        |         |                                     | -0.11    1.89     1.60     1.60     -10.00
+
+E279    | -8.48   | too far from path                   | +y       -y       -y
+        |         |                                     | -0.11    1.63     -10.00
+
+E280    | -8.10   | too far from path                   | +z       -z       -y
+        |         |                                     | -0.03    1.94     -10.00
+
+E281    | -6.69   | too far from path                   | +z       -x       +0       +z
+        |         |                                     | -0.03    1.67     1.68     -10.00
+
+E282    | -6.34   | too far from path                   | +0       -z       +x       -z
+        |         |                                     | -0.00    1.97     1.69     -10.00
+
+E283    | -8.51   | too far from path                   | +x       -x       +y
+        |         |                                     | -0.09    1.58     -10.00
+
+E284    | -8.41   | too far from path                   | +y       +x       -y
+        |         |                                     | -0.12    1.71     -10.00
+
+E285    | -8.22   | too far from path                   | +x       +z       +z
+        |         |                                     | -0.09    1.86     -10.00
+
+E286    | -4.14   | too far from path                   | +z       +0       +0       -z       +x
+        |         |                                     | -0.03    1.97     1.96     1.97     -10.00
+
+E287    | -8.45   | too far from path                   | +y       -x       +y
+        |         |                                     | -0.11    1.66     -10.00
+
+E288    | -8.48   | too far from path                   | -y       +y       -z
+        |         |                                     | -0.04    1.56     -10.00
+
+E289    | -6.77   | too far from path                   | +z       +y       +0       +z
+        |         |                                     | -0.03    1.63     1.63     -10.00
+
+E290    | -4.25   | too far from path                   | -y       +0       -z       -x
+        |         |                                     | 1.96     1.96     1.84     -10.00
+
+E291    | -8.21   | too far from path                   | +x       -z       +x
+        |         |                                     | -0.09    1.87     -10.00
+
+E292    | -8.23   | too far from path                   | +x       +z       +z
+        |         |                                     | -0.09    1.86     -10.00
+
+E293    | -8.20   | too far from path                   | -y       +z       -y
+        |         |                                     | -0.04    1.85     -10.00
+
+E294    | -6.36   | too far from path                   | +y       +0       +z       -y
+        |         |                                     | -0.11    1.88     1.87     -10.00
+
+E295    | -8.38   | too far from path                   | -y       -x       -z
+        |         |                                     | -0.04    1.66     -10.00
+
+E296    | -8.31   | too far from path                   | -z       -y       -x
+        |         |                                     | -0.03    1.72     -10.00
+
+E297    | -8.50   | too far from path                   | +x       -x       -z
+        |         |                                     | -0.09    1.59     -10.00
+
+E298    | -6.29   | too far from path                   | +0       +z       -y       -y
+        |         |                                     | -0.01    1.98     1.74     -10.00
+
+E299    | -6.41   | too far from path                   | +0       +x       -y       +x
+        |         |                                     | -0.04    1.91     1.72     -10.00
+
+E300    | -8.37   | too far from path                   | +z       -x       -y
+        |         |                                     | -0.03    1.66     -10.00
+
+E301    | -8.35   | too far from path                   | +x       -y       +x
+        |         |                                     | -0.09    1.73     -10.00
+
+E302    | -8.40   | too far from path                   | +z       +y       +x
+        |         |                                     | -0.03    1.64     -10.00
+
+E303    | -4.93   | too far from path                   | +0       -y       +y       +0       -z
+        |         |                                     | -0.01    1.95     1.57     1.57     -10.00
+
+E304    | -6.09   | too far from path                   | +0       -z       +z       +x
+        |         |                                     | -0.00    1.97     1.94     -10.00
+
+E305    | -4.52   | too far from path                   | -x       +0       +y       +y
+        |         |                                     | 1.92     1.91     1.65     -10.00
+
+E306    | -8.38   | too far from path                   | -y       -x       +y
+        |         |                                     | -0.05    1.66     -10.00
+
+E307    | -8.09   | too far from path                   | +z       -z       -y
+        |         |                                     | -0.03    1.94     -10.00
+
+E308    | -2.13   | too far from path                   | +0       +0       +0       +z       -z       -y
+        |         |                                     | -0.01    1.99     1.99     1.96     1.94     -10.00
+
+E309    | -8.48   | too far from path                   | -x       +x       -y
+        |         |                                     | -0.09    1.60     -10.00
+
+E310    | -6.29   | too far from path                   | -x       +0       -z       +z
+        |         |                                     | -0.09    1.91     1.88     -10.00
+
+E311    | -6.11   | too far from path                   | -z       +0       +z       -x
+        |         |                                     | -0.03    1.97     1.95     -10.00
+
+E312    | -8.42   | too far from path                   | +y       +x       -z
+        |         |                                     | -0.11    1.69     -10.00
+
+E313    | -8.37   | too far from path                   | +y       +y       -z
+        |         |                                     | -0.11    1.74     -10.00
+
+E314    | -4.64   | too far from path                   | +0       +x       +0       -x       +z
+        |         |                                     | -0.01    1.91     1.90     1.56     -10.00
+
+E315    | -6.30   | too far from path                   | +z       -y       -y
+        |         |                                     | 1.97     1.73     -10.00
+
+E316    | -8.40   | too far from path                   | +z       +y       +x
+        |         |                                     | -0.03    1.63     -10.00
+
+E317    | -8.38   | too far from path                   | +y       +y       -y
+        |         |                                     | -0.11    1.73     -10.00
+
+E318    | -8.50   | too far from path                   | +x       -x       +x
+        |         |                                     | -0.09    1.59     -10.00
+
+E319    | -6.35   | too far from path                   | +x       +z       +0       -x
+        |         |                                     | -0.09    1.87     1.87     -10.00
+
+E320    | -6.67   | too far from path                   | -z       -x       +0       +x
+        |         |                                     | -0.03    1.68     1.69     -10.00
+
+E321    | -8.29   | too far from path                   | -z       -y       +y
+        |         |                                     | -0.02    1.73     -10.00
+
+E322    | -6.26   | too far from path                   | -x       -z       +0       -x
+        |         |                                     | -0.08    1.91     1.91     -10.00
+
+E323    | -8.50   | too far from path                   | +x       -x       +x
+        |         |                                     | -0.09    1.59     -10.00
+
+E324    | -6.41   | too far from path                   | +0       +x       -y       -z
+        |         |                                     | -0.04    1.91     1.72     -10.00
+
+E325    | -8.18   | too far from path                   | -y       -z       +x
+        |         |                                     | -0.05    1.87     -10.00
+
+E326    | -8.17   | too far from path                   | -x       +z       +x
+        |         |                                     | -0.09    1.91     -10.00
+
+E327    | -6.24   | too far from path                   | +0       -y       +z       +z
+        |         |                                     | -0.04    1.95     1.84     -10.00
+
+E328    | -8.18   | too far from path                   | -y       -z       +z
+        |         |                                     | -0.05    1.86     -10.00
+
+E329    | -8.19   | too far from path                   | +y       +z       +z
+        |         |                                     | -0.11    1.92     -10.00
+
+E330    | -8.44   | too far from path                   | -x       +y       +x
+        |         |                                     | -0.09    1.64     -10.00
+
+E331    | -6.34   | too far from path                   | +y       +0       -z       +z
+        |         |                                     | -0.11    1.88     1.89     -10.00
+
+E332    | -8.20   | too far from path                   | -y       +z       +y
+        |         |                                     | -0.04    1.84     -10.00
+
+E333    | -8.45   | too far from path                   | -x       +y       -y
+        |         |                                     | -0.09    1.64     -10.00
+
+E334    | -8.19   | too far from path                   | -y       -z       +y
+        |         |                                     | -0.05    1.86     -10.00
+
+E335    | -8.38   | too far from path                   | +y       +y       +x
+        |         |                                     | -0.12    1.74     -10.00
+
+E336    | -8.34   | too far from path                   | -z       +x       -z
+        |         |                                     | -0.03    1.69     -10.00
+
+E337    | -6.18   | too far from path                   | -x       -z       +x
+        |         |                                     | 1.91     1.91     -10.00
+
+E338    | -2.46   | too far from path                   | +z       +0       +0       +0       -x       -y
+        |         |                                     | -0.03    1.96     1.96     1.96     1.68     -10.00
+
+E339    | -8.18   | too far from path                   | -x       +z       +z
+        |         |                                     | -0.08    1.90     -10.00
+
+E340    | -8.32   | too far from path                   | +x       +x       +y
+        |         |                                     | -0.09    1.77     -10.00
+
+E341    | -8.22   | too far from path                   | +x       +z       +z
+        |         |                                     | -0.09    1.86     -10.00
+
+E342    | -8.38   | too far from path                   | -z       +y       -z
+        |         |                                     | -0.03    1.65     -10.00
+
+E343    | -8.39   | too far from path                   | -y       +x       -y
+        |         |                                     | -0.05    1.65     -10.00
+
+E344    | -8.39   | too far from path                   | -y       +x       +z
+        |         |                                     | -0.04    1.65     -10.00
+
+E345    | -8.48   | too far from path                   | -y       +y       -z
+        |         |                                     | -0.05    1.56     -10.00
+
+E346    | -6.62   | too far from path                   | +x       +0       -x       -x
+        |         |                                     | -0.09    1.91     1.56     -10.00
+
+E347    | -8.48   | too far from path                   | -x       +x       +y
+        |         |                                     | -0.08    1.61     -10.00
+
+E348    | -8.21   | too far from path                   | +x       -z       -x
+        |         |                                     | -0.09    1.87     -10.00
+
+E349    | -4.30   | too far from path                   | +0       -x       +0       -z       -z
+        |         |                                     | -0.00    1.91     1.91     1.88     -10.00
+
+E350    | -8.19   | too far from path                   | -y       -z       -z
+        |         |                                     | -0.05    1.86     -10.00
+
+E351    | -8.47   | too far from path                   | +x       +y       +y
+        |         |                                     | -0.09    1.62     -10.00
+
+E352    | -8.18   | too far from path                   | -x       +z       +x
+        |         |                                     | -0.08    1.90     -10.00
+
+E353    | -8.09   | too far from path                   | -z       +z       +y
+        |         |                                     | -0.03    1.94     -10.00
+
+E354    | -8.18   | too far from path                   | +y       +z       -y
+        |         |                                     | -0.11    1.93     -10.00
+
+E355    | -8.18   | too far from path                   | -x       -z       +x
+        |         |                                     | -0.09    1.91     -10.00
+
+E356    | -4.47   | too far from path                   | +x       +0       -z       +0       +y
+        |         |                                     | -0.09    1.91     1.85     1.85     -10.00
+
+E357    | -6.31   | too far from path                   | -x       +0       +z       -z
+        |         |                                     | -0.09    1.91     1.86     -10.00
+
+E358    | -6.62   | too far from path                   | +x       +0       -x       +y
+        |         |                                     | -0.09    1.91     1.56     -10.00
+
+E359    | -6.11   | too far from path                   | +0       +z       +z       -z
+        |         |                                     | -0.00    1.97     1.93     -10.00
+
+E360    | -6.16   | too far from path                   | +z       -z       +0       +y
+        |         |                                     | -0.03    1.94     1.94     -10.00
+
+E361    | -8.18   | too far from path                   | -x       +z       -x
+        |         |                                     | -0.08    1.90     -10.00
+
+E362    | -8.49   | too far from path                   | +y       -y       -x
+        |         |                                     | -0.11    1.63     -10.00
+
+E363    | -8.48   | too far from path                   | -y       +y       -x
+        |         |                                     | -0.04    1.57     -10.00
+
+E364    | -8.30   | too far from path                   | +z       -y       +z
+        |         |                                     | -0.03    1.73     -10.00
+
+E365    | -6.12   | too far from path                   | +z       +0       +z       -z
+        |         |                                     | -0.03    1.97     1.95     -10.00
+
+E366    | -8.35   | too far from path                   | +z       +x       +z
+        |         |                                     | -0.03    1.68     -10.00
+
+E367    | -8.18   | too far from path                   | -x       -z       +y
+        |         |                                     | -0.08    1.91     -10.00
+
+E368    | -8.08   | too far from path                   | +z       +z       +x
+        |         |                                     | -0.02    1.94     -10.00
+
+E369    | -8.35   | too far from path                   | -z       -x       -x
+        |         |                                     | -0.04    1.68     -10.00
+
+E370    | -8.31   | too far from path                   | -z       -y       +x
+        |         |                                     | -0.03    1.72     -10.00
+
+E371    | -8.38   | too far from path                   | +y       +y       -x
+        |         |                                     | -0.12    1.74     -10.00
+
+E372    | -6.71   | too far from path                   | -y       -x       +0       -y
+        |         |                                     | -0.05    1.67     1.67     -10.00
+
+E373    | -6.51   | too far from path                   | +0       +y       -y       -x
+        |         |                                     | -0.01    1.88     1.62     -10.00
+
+E374    | -6.11   | too far from path                   | +0       +z       -z       +y
+        |         |                                     | -0.01    1.97     1.94     -10.00
+
+E375    | -6.49   | too far from path                   | -x       +0       -y       -z
+        |         |                                     | -0.08    1.91     1.68     -10.00
+
+E376    | -6.12   | too far from path                   | +z       +0       +z       +x
+        |         |                                     | -0.03    1.97     1.95     -10.00
+
+E377    | -8.48   | too far from path                   | +y       -y       +y
+        |         |                                     | -0.12    1.64     -10.00
+
+E378    | -8.36   | too far from path                   | -z       -x       -z
+        |         |                                     | -0.03    1.67     -10.00
+
+E379    | -8.36   | too far from path                   | -z       -x       -y
+        |         |                                     | -0.03    1.68     -10.00
+
+E380    | -6.39   | too far from path                   | +0       -y       -x       -z
+        |         |                                     | -0.01    1.95     1.66     -10.00
+
+E381    | -6.66   | too far from path                   | -z       -x       +0       -y
+        |         |                                     | -0.03    1.68     1.69     -10.00
+
+E382    | -8.38   | too far from path                   | -z       +y       -x
+        |         |                                     | -0.03    1.65     -10.00
+
+E383    | -6.20   | too far from path                   | -y       +z       +z
+        |         |                                     | 1.96     1.85     -10.00
+
+E384    | -8.22   | too far from path                   | +x       +z       -z
+        |         |                                     | -0.09    1.87     -10.00
+
+E385    | -8.48   | too far from path                   | -x       +x       +z
+        |         |                                     | -0.09    1.61     -10.00
+
+E386    | -8.49   | too far from path                   | +x       -x       +z
+        |         |                                     | -0.09    1.59     -10.00
+
+E387    | -8.47   | too far from path                   | -x       +x       +x
+        |         |                                     | -0.08    1.61     -10.00
+
+E388    | -6.15   | too far from path                   | -z       +z       +0       +z
+        |         |                                     | -0.03    1.94     1.94     -10.00
+
+E389    | -8.30   | too far from path                   | +z       -y       +y
+        |         |                                     | -0.03    1.74     -10.00
+
+E390    | -8.30   | too far from path                   | +z       -y       +x
+        |         |                                     | -0.03    1.73     -10.00
+
+E391    | -8.36   | too far from path                   | +z       +x       -x
+        |         |                                     | -0.03    1.68     -10.00
+
+E392    | -8.38   | too far from path                   | -z       +y       -z
+        |         |                                     | -0.03    1.66     -10.00
+
+E393    | -8.21   | too far from path                   | +x       -z       +z
+        |         |                                     | -0.09    1.88     -10.00
+
+E394    | -8.18   | too far from path                   | +y       -z       -y
+        |         |                                     | -0.11    1.93     -10.00
+
+E395    | -8.50   | too far from path                   | +x       -x       -z
+        |         |                                     | -0.09    1.59     -10.00
+
+E396    | -8.23   | too far from path                   | +x       +z       -z
+        |         |                                     | -0.09    1.86     -10.00
+
+E397    | -8.48   | too far from path                   | +y       -y       -z
+        |         |                                     | -0.12    1.64     -10.00
+
+E398    | -8.37   | too far from path                   | +x       -y       +x
+        |         |                                     | -0.09    1.72     -10.00
+
+E399    | -6.37   | too far from path                   | +0       +z       +x       +z
+        |         |                                     | -0.01    1.97     1.68     -10.00
+
+E400    | -6.17   | too far from path                   | +z       +z       +0       +z
+        |         |                                     | -0.03    1.93     1.93     -10.00
+
+E401    | -8.38   | too far from path                   | -y       +x       -x
+        |         |                                     | -0.04    1.66     -10.00
+
+E402    | -8.19   | too far from path                   | +y       +z       +z
+        |         |                                     | -0.12    1.93     -10.00
+
+E403    | -8.10   | too far from path                   | +z       -z       -y
+        |         |                                     | -0.03    1.94     -10.00
+
+E404    | -6.34   | too far from path                   | +y       +0       -z       -z
+        |         |                                     | -0.12    1.88     1.90     -10.00
+
+E405    | -6.35   | too far from path                   | +0       +z       +x       +z
+        |         |                                     | -0.01    1.96     1.69     -10.00
+
+E406    | -8.22   | too far from path                   | -y       -y       -z
+        |         |                                     | -0.04    1.82     -10.00
+
+E407    | -8.44   | too far from path                   | -x       +y       +z
+        |         |                                     | -0.08    1.65     -10.00
+
+E408    | -4.94   | too far from path                   | -z       +x       +0       +0       +y
+        |         |                                     | -0.03    1.69     1.70     1.70     -10.00
+
+E409    | -8.31   | too far from path                   | +x       +x       +y
+        |         |                                     | -0.09    1.78     -10.00
+
+E410    | -6.34   | too far from path                   | +0       +x       -y       -z
+        |         |                                     | -0.02    1.95     1.72     -10.00
+
+E411    | -8.45   | too far from path                   | +y       -x       -y
+        |         |                                     | -0.11    1.67     -10.00
+
+E412    | -8.30   | too far from path                   | +z       -y       -z
+        |         |                                     | -0.03    1.73     -10.00
+
+E413    | -8.19   | too far from path                   | +y       -z       +z
+        |         |                                     | -0.11    1.93     -10.00
+
+E414    | -8.31   | too far from path                   | +z       -y       +x
+        |         |                                     | -0.03    1.73     -10.00
+
+E415    | -8.31   | too far from path                   | -z       -y       -y
+        |         |                                     | -0.03    1.72     -10.00
+
+E416    | -6.36   | too far from path                   | +0       +x       -y       +y
+        |         |                                     | -0.00    1.91     1.73     -10.00
+
+E417    | -6.39   | too far from path                   | +0       -x       -y       +x
+        |         |                                     | -0.00    1.91     1.71     -10.00
+
+E418    | -8.48   | too far from path                   | -y       +y       -y
+        |         |                                     | -0.04    1.57     -10.00
+
+E419    | -8.46   | too far from path                   | +x       +y       +y
+        |         |                                     | -0.09    1.62     -10.00
+
+E420    | -8.47   | too far from path                   | +y       -y       -z
+        |         |                                     | -0.11    1.64     -10.00
+
+E421    | -4.45   | too far from path                   | +0       +0       +y       +x       -z
+        |         |                                     | -0.01    1.99     1.87     1.70     -10.00
+
+E422    | -6.22   | too far from path                   | +0       +y       +z       -y
+        |         |                                     | -0.03    1.88     1.92     -10.00
+
+E423    | -8.19   | too far from path                   | -y       -z       -x
+        |         |                                     | -0.05    1.86     -10.00
+
+E424    | -8.21   | too far from path                   | +x       -z       -y
+        |         |                                     | -0.09    1.88     -10.00
+
+E425    | -8.48   | too far from path                   | -y       +y       -x
+        |         |                                     | -0.04    1.57     -10.00
+
+E426    | -6.86   | too far from path                   | -x       +x       +0       -y
+        |         |                                     | -0.09    1.61     1.61     -10.00
+
+E427    | -8.09   | too far from path                   | -z       -z       -y
+        |         |                                     | -0.03    1.95     -10.00
+
+E428    | -6.51   | too far from path                   | +0       -y       +y       +x
+        |         |                                     | -0.02    1.95     1.56     -10.00
+
+E429    | -8.38   | too far from path                   | -z       +y       +y
+        |         |                                     | -0.03    1.65     -10.00
+
+E430    | -2.73   | too far from path                   | +0       +x       +x       +0       +0       +x
+        |         |                                     | -0.01    1.91     1.79     1.79     1.79     -10.00
+
+E431    | -8.08   | too far from path                   | +z       +z       -x
+        |         |                                     | -0.02    1.94     -10.00
+
+E432    | -8.47   | too far from path                   | +y       -y       +x
+        |         |                                     | -0.11    1.64     -10.00
+
+E433    | -8.09   | too far from path                   | -z       -z       +z
+        |         |                                     | -0.03    1.94     -10.00
+
+E434    | -6.49   | too far from path                   | +0       -y       +y       -z
+        |         |                                     | -0.00    1.95     1.56     -10.00
+
+E435    | -8.48   | too far from path                   | +y       -y       -z
+        |         |                                     | -0.11    1.64     -10.00
+
+E436    | -8.48   | too far from path                   | +y       -y       -y
+        |         |                                     | -0.11    1.63     -10.00
+
+E437    | -6.40   | too far from path                   | +0       -y       +x       +x
+        |         |                                     | -0.01    1.95     1.66     -10.00
+
+E438    | -6.48   | too far from path                   | +y       -y       -z
+        |         |                                     | 1.88     1.63     -10.00
+
+E439    | -6.14   | too far from path                   | -z       -z       +0       -x
+        |         |                                     | -0.03    1.95     1.95     -10.00
+
+E440    | -8.39   | too far from path                   | -y       +x       -y
+        |         |                                     | -0.04    1.66     -10.00
+
+E441    | -8.48   | too far from path                   | -y       +y       -x
+        |         |                                     | -0.05    1.56     -10.00
+
+E442    | -8.41   | too far from path                   | +y       +x       +x
+        |         |                                     | -0.11    1.70     -10.00
+
+E443    | -4.85   | too far from path                   | +x       +y       +0       +x
+        |         |                                     | 1.91     1.61     1.62     -10.00
+
+E444    | -4.46   | too far from path                   | +x       +0       +0       +z       +x
+        |         |                                     | -0.09    1.91     1.91     1.80     -10.00
+
+E445    | -8.48   | too far from path                   | -y       +y       +y
+        |         |                                     | -0.04    1.56     -10.00
+
+E446    | -6.11   | too far from path                   | +0       -z       +z       +y
+        |         |                                     | -0.02    1.97     1.94     -10.00
+
+E447    | -8.35   | too far from path                   | -z       +x       +y
+        |         |                                     | -0.03    1.69     -10.00
+
+E448    | -4.76   | too far from path                   | +x       +0       -y       +0       -x
+        |         |                                     | -0.09    1.91     1.71     1.71     -10.00
+
+E449    | -4.33   | too far from path                   | +y       +0       +z       +y
+        |         |                                     | 1.88     1.88     1.90     -10.00
+
+E450    | -8.21   | too far from path                   | +x       -z       -y
+        |         |                                     | -0.09    1.88     -10.00
+
+E451    | -8.19   | too far from path                   | +y       +z       -y
+        |         |                                     | -0.11    1.92     -10.00
+
+E452    | -8.18   | too far from path                   | -x       +z       +z
+        |         |                                     | -0.08    1.90     -10.00
+
+E453    | -6.73   | too far from path                   | -y       +x       +0       -x
+        |         |                                     | -0.04    1.66     1.66     -10.00
+
+E454    | -4.44   | too far from path                   | -y       +0       +z       +0       -z
+        |         |                                     | -0.05    1.95     1.83     1.83     -10.00
+
+E455    | -6.26   | too far from path                   | -y       +0       -z       -y
+        |         |                                     | -0.05    1.95     1.83     -10.00
+
+E456    | -6.36   | too far from path                   | +z       -x       -x
+        |         |                                     | 1.97     1.67     -10.00
+
+E457    | -8.22   | too far from path                   | +x       +z       -y
+        |         |                                     | -0.09    1.87     -10.00
+
+E458    | -6.72   | too far from path                   | -z       +y       +0       +z
+        |         |                                     | -0.03    1.65     1.66     -10.00
+
+E459    | -8.19   | too far from path                   | -y       -z       +x
+        |         |                                     | -0.05    1.86     -10.00
+
+E460    | -6.30   | too far from path                   | -x       +0       +z       +y
+        |         |                                     | -0.09    1.91     1.87     -10.00
+
+E461    | -4.33   | too far from path                   | +0       -x       +0       +z       -y
+        |         |                                     | -0.03    1.91     1.91     1.88     -10.00
+
+E462    | -8.38   | too far from path                   | -x       -y       -x
+        |         |                                     | -0.09    1.70     -10.00
+
+E463    | -8.13   | too far from path                   | +y       +z       -x
+        |         |                                     | -0.07    1.94     -10.00
+
+E464    | -6.27   | too far from path                   | -y       +0       +z       +x
+        |         |                                     | -0.05    1.96     1.82     -10.00
+
+E465    | -8.19   | too far from path                   | -y       +z       -y
+        |         |                                     | -0.04    1.85     -10.00
+
+E466    | -6.46   | too far from path                   | +y       +0       +y       +y
+        |         |                                     | -0.12    1.88     1.78     -10.00
+
+E467    | -8.22   | too far from path                   | +x       -z       -x
+        |         |                                     | -0.09    1.87     -10.00
+
+E468    | -6.35   | too far from path                   | -z       -x       +x
+        |         |                                     | 1.97     1.68     -10.00
+
+E469    | -8.10   | too far from path                   | +z       +z       -y
+        |         |                                     | -0.03    1.93     -10.00
+
+E470    | -6.92   | too far from path                   | -y       +y       +0       -x
+        |         |                                     | -0.04    1.56     1.57     -10.00
+
+E471    | -8.35   | too far from path                   | -z       +x       +y
+        |         |                                     | -0.03    1.69     -10.00
+
+E472    | -8.09   | too far from path                   | -z       -z       -y
+        |         |                                     | -0.03    1.95     -10.00
+
+E473    | -8.19   | too far from path                   | +y       +z       -y
+        |         |                                     | -0.12    1.93     -10.00
+
+E474    | -8.10   | too far from path                   | +z       +z       +z
+        |         |                                     | -0.03    1.93     -10.00
+
+E475    | -6.38   | too far from path                   | -z       +0       +x       -x
+        |         |                                     | -0.04    1.96     1.69     -10.00
+
+E476    | -8.20   | too far from path                   | -y       +z       +y
+        |         |                                     | -0.04    1.85     -10.00
+
+E477    | -8.17   | too far from path                   | -x       -z       +x
+        |         |                                     | -0.08    1.91     -10.00
+
+E478    | -4.37   | too far from path                   | +x       +0       +z       +0       -y
+        |         |                                     | -0.05    1.95     1.86     1.86     -10.00
+
+E479    | -8.31   | too far from path                   | +x       +x       +y
+        |         |                                     | -0.09    1.78     -10.00
+
+E480    | -6.49   | too far from path                   | +0       +x       +y       -y
+        |         |                                     | -0.01    1.91     1.62     -10.00
+
+E481    | -6.45   | too far from path                   | +y       -x       +y
+        |         |                                     | 1.89     1.66     -10.00
+
+E482    | -6.39   | too far from path                   | +0       -y       -x       -x
+        |         |                                     | -0.01    1.95     1.66     -10.00
+
+E483    | -8.09   | too far from path                   | -z       +z       +x
+        |         |                                     | -0.03    1.94     -10.00
+
+E484    | -6.49   | too far from path                   | +0       +y       -y       +y
+        |         |                                     | -0.01    1.88     1.64     -10.00
+
+E485    | -6.70   | too far from path                   | +y       +x       +0       -z
+        |         |                                     | -0.11    1.70     1.71     -10.00
+
+E486    | -6.35   | too far from path                   | +z       +x       -x
+        |         |                                     | 1.97     1.68     -10.00
+
+E487    | -6.58   | too far from path                   | -x       +0       +x       +y
+        |         |                                     | -0.09    1.91     1.60     -10.00
+
+E488    | -8.09   | too far from path                   | -z       -z       +x
+        |         |                                     | -0.03    1.95     -10.00
+
+E489    | -6.20   | too far from path                   | +0       +y       +z       +x
+        |         |                                     | -0.00    1.88     1.92     -10.00
+
+E490    | -8.20   | too far from path                   | -y       +z       +y
+        |         |                                     | -0.05    1.85     -10.00
+
+E491    | -8.31   | too far from path                   | +x       +x       +z
+        |         |                                     | -0.09    1.77     -10.00
+
+E492    | -8.38   | too far from path                   | -x       -y       +x
+        |         |                                     | -0.08    1.70     -10.00
+
+E493    | -8.33   | too far from path                   | -z       +x       +y
+        |         |                                     | -0.02    1.69     -10.00
+
+E494    | -8.22   | too far from path                   | -y       -y       -z
+        |         |                                     | -0.05    1.82     -10.00
+
+E495    | -8.47   | too far from path                   | +x       +y       +x
+        |         |                                     | -0.09    1.62     -10.00
+
+E496    | -8.24   | too far from path                   | -y       -y       +z
+        |         |                                     | -0.05    1.80     -10.00
+
+E497    | -8.48   | too far from path                   | -y       +y       +x
+        |         |                                     | -0.04    1.57     -10.00
+
+E498    | -8.18   | too far from path                   | +y       -z       +y
+        |         |                                     | -0.12    1.94     -10.00
+
+E499    | -8.19   | too far from path                   | +y       -z       +x
+        |         |                                     | -0.11    1.92     -10.00
+
+E500    | -8.37   | too far from path                   | +y       +y       +x
+        |         |                                     | -0.11    1.74     -10.00
+
+E501    | -8.38   | too far from path                   | -y       +x       -x
+        |         |                                     | -0.05    1.66     -10.00
+
+E502    | -8.38   | too far from path                   | -z       +y       -y
+        |         |                                     | -0.03    1.65     -10.00
+
+E503    | -6.57   | too far from path                   | +y       +0       -x       +y
+        |         |                                     | -0.11    1.88     1.65     -10.00
+
+E504    | -6.21   | too far from path                   | +0       -x       -z       +z
+        |         |                                     | -0.02    1.91     1.90     -10.00
+
+E505    | -4.69   | too far from path                   | +0       +z       -x       +0       +z
+        |         |                                     | -0.01    1.97     1.67     1.68     -10.00
+
+E506    | -6.35   | too far from path                   | -z       +0       -y       -y
+        |         |                                     | -0.03    1.97     1.71     -10.00
+
+E507    | -8.36   | too far from path                   | +z       -x       -z
+        |         |                                     | -0.03    1.67     -10.00
+
+E508    | -8.39   | too far from path                   | -x       -y       -y
+        |         |                                     | -0.08    1.70     -10.00
+
+E509    | -8.08   | too far from path                   | -z       -z       -y
+        |         |                                     | -0.03    1.95     -10.00
+
+E510    | -8.40   | too far from path                   | -y       -x       -x
+        |         |                                     | -0.05    1.65     -10.00
+
+E511    | -8.35   | too far from path                   | +z       +x       +y
+        |         |                                     | -0.03    1.69     -10.00
+
+E512    | -4.81   | too far from path                   | +z       -y       +0       +0       +z
+        |         |                                     | -0.03    1.74     1.74     1.75     -10.00
+
+E513    | -6.50   | too far from path                   | +x       -x       +z
+        |         |                                     | 1.91     1.59     -10.00
+
+E514    | -8.10   | too far from path                   | +z       -z       -y
+        |         |                                     | -0.03    1.94     -10.00
+
+E515    | -8.48   | too far from path                   | -x       +x       +x
+        |         |                                     | -0.09    1.61     -10.00
+
+E516    | -6.22   | too far from path                   | +x       -z       -y
+        |         |                                     | 1.91     1.87     -10.00
+
+E517    | -6.65   | too far from path                   | +x       -y       +0       +z
+        |         |                                     | -0.09    1.72     1.72     -10.00
+
+E518    | -8.33   | too far from path                   | +z       +x       +x
+        |         |                                     | -0.01    1.69     -10.00
+
+E519    | -8.31   | too far from path                   | -z       -y       -y
+        |         |                                     | -0.03    1.73     -10.00
+
+E520    | -6.11   | too far from path                   | +0       -z       +z       +z
+        |         |                                     | -0.02    1.97     1.94     -10.00
+
+E521    | -8.38   | too far from path                   | -z       +y       -x
+        |         |                                     | -0.03    1.65     -10.00
+
+E522    | -8.37   | too far from path                   | +x       -y       -y
+        |         |                                     | -0.09    1.72     -10.00
+
+E523    | -6.88   | too far from path                   | +y       -y       +0       -z
+        |         |                                     | -0.11    1.61     1.62     -10.00
+
+E524    | -8.08   | too far from path                   | +y       -z       +y
+        |         |                                     | -0.04    1.96     -10.00
+
+E525    | -8.17   | too far from path                   | +y       -z       +z
+        |         |                                     | -0.11    1.94     -10.00
+
+E526    | -6.37   | too far from path                   | +x       +z       +0       +y
+        |         |                                     | -0.09    1.86     1.86     -10.00
+
+E527    | -8.35   | too far from path                   | -y       -x       +x
+        |         |                                     | -0.01    1.66     -10.00
+
+E528    | -8.19   | too far from path                   | +y       +z       -y
+        |         |                                     | -0.11    1.92     -10.00
+
+E529    | -8.35   | too far from path                   | +z       +x       -z
+        |         |                                     | -0.03    1.68     -10.00
+
+E530    | -8.18   | too far from path                   | -y       -z       -x
+        |         |                                     | -0.05    1.86     -10.00
+
+E531    | -8.51   | too far from path                   | +x       -x       +z
+        |         |                                     | -0.09    1.58     -10.00
+
+E532    | -4.96   | too far from path                   | -x       -y       +0       +0       +z
+        |         |                                     | -0.09    1.70     1.71     1.71     -10.00
+
+E533    | -4.21   | too far from path                   | +0       +0       -y       +z       -z
+        |         |                                     | -0.00    2.00     1.94     1.85     -10.00
+
+E534    | -6.39   | too far from path                   | -z       +0       -x       -z
+        |         |                                     | -0.03    1.97     1.67     -10.00
+
+E535    | -8.19   | too far from path                   | -x       +z       +y
+        |         |                                     | -0.08    1.90     -10.00
+
+E536    | -8.36   | too far from path                   | +z       +x       +y
+        |         |                                     | -0.03    1.68     -10.00
+
+E537    | -8.38   | too far from path                   | -x       -y       +x
+        |         |                                     | -0.08    1.71     -10.00
+
+E538    | -8.10   | too far from path                   | +z       -z       -x
+        |         |                                     | -0.03    1.94     -10.00
+
+E539    | -0.55   | too far from path                   | +0       +0       +0       +0       -y       +y       -z
+        |         |                                     | -0.01    1.99     1.99     1.99     1.93     1.56     -10.00
+
+E540    | -8.50   | too far from path                   | +x       -x       +y
+        |         |                                     | -0.09    1.59     -10.00
+
+E541    | -8.40   | too far from path                   | +z       +y       +y
+        |         |                                     | -0.03    1.63     -10.00
+
+E542    | -8.35   | too far from path                   | -z       +x       +z
+        |         |                                     | -0.03    1.68     -10.00
+
+E543    | -6.18   | too far from path                   | -x       -z       -x
+        |         |                                     | 1.92     1.91     -10.00
+
+E544    | -8.37   | too far from path                   | +x       -y       -z
+        |         |                                     | -0.09    1.72     -10.00
+
+E545    | -8.22   | too far from path                   | +x       -z       -x
+        |         |                                     | -0.09    1.87     -10.00
+
+E546    | -8.38   | too far from path                   | -z       +y       -z
+        |         |                                     | -0.03    1.65     -10.00
+
+E547    | -4.37   | too far from path                   | -x       +z       +0       +0       -y
+        |         |                                     | -0.08    1.90     1.90     1.90     -10.00
+
+E548    | -6.52   | too far from path                   | +x       +x       +0       -z
+        |         |                                     | -0.04    1.76     1.76     -10.00
+
+E549    | -6.11   | too far from path                   | +0       +z       +z       -x
+        |         |                                     | -0.01    1.97     1.93     -10.00
+
+E550    | -8.23   | too far from path                   | -y       -y       +x
+        |         |                                     | -0.05    1.82     -10.00
+
+E551    | -6.36   | too far from path                   | +x       +0       +x       -y
+        |         |                                     | -0.09    1.91     1.82     -10.00
+
+E552    | -8.48   | too far from path                   | -y       +y       +x
+        |         |                                     | -0.05    1.56     -10.00
+
+E553    | -8.10   | too far from path                   | +z       -z       -z
+        |         |                                     | -0.03    1.93     -10.00
+
+E554    | -6.16   | too far from path                   | +z       -z       +0       -z
+        |         |                                     | -0.03    1.94     1.94     -10.00
+
+E555    | -6.56   | too far from path                   | +x       +0       +y       -y
+        |         |                                     | -0.09    1.91     1.62     -10.00
+
+E556    | -8.41   | too far from path                   | +y       +x       +z
+        |         |                                     | -0.11    1.70     -10.00
+
+E557    | -6.12   | too far from path                   | -z       +0       +z       +z
+        |         |                                     | -0.03    1.96     1.95     -10.00
+
+E558    | -8.22   | too far from path                   | +x       +z       -y
+        |         |                                     | -0.09    1.87     -10.00
+
+E559    | -4.18   | too far from path                   | +0       +z       +z       +0       +y
+        |         |                                     | -0.01    1.97     1.93     1.93     -10.00
+
+E560    | -8.39   | too far from path                   | -y       -x       -x
+        |         |                                     | -0.04    1.65     -10.00
+
+E561    | -6.84   | too far from path                   | +x       +y       +0       +x
+        |         |                                     | -0.09    1.62     1.63     -10.00
+
+E562    | -8.33   | too far from path                   | -x       -x       -x
+        |         |                                     | -0.09    1.76     -10.00
+
+E563    | -8.32   | too far from path                   | -x       -x       -x
+        |         |                                     | -0.08    1.76     -10.00
+
+E564    | -8.33   | too far from path                   | -x       -x       -x
+        |         |                                     | -0.09    1.76     -10.00
+
+E565    | -8.32   | too far from path                   | -x       -x       -x
+        |         |                                     | -0.08    1.77     -10.00
+
+E566    | -8.32   | too far from path                   | -x       -x       -x
+        |         |                                     | -0.08    1.77     -10.00
+
+E567    | -6.57   | too far from path                   | +x       +0       +y       -z
+        |         |                                     | -0.09    1.90     1.62     -10.00
+
+E568    | -8.34   | too far from path                   | -z       -x       -y
+        |         |                                     | -0.02    1.68     -10.00
+
+E569    | -8.18   | too far from path                   | -y       -z       +y
+        |         |                                     | -0.04    1.86     -10.00
+
+E570    | -8.44   | too far from path                   | -x       +y       -z
+        |         |                                     | -0.09    1.64     -10.00
+
+E571    | -8.42   | too far from path                   | +y       +x       +y
+        |         |                                     | -0.11    1.69     -10.00
+
+E572    | -8.49   | too far from path                   | -y       +y       +x
+        |         |                                     | -0.05    1.56     -10.00
+
+E573    | -8.36   | too far from path                   | +z       +x       -y
+        |         |                                     | -0.03    1.68     -10.00
+
+E574    | -4.41   | too far from path                   | -z       +0       +y       -x
+        |         |                                     | 1.97     1.96     1.66     -10.00
+
+E575    | -8.42   | too far from path                   | +y       +x       -y
+        |         |                                     | -0.11    1.69     -10.00
+
+E576    | -8.43   | too far from path                   | -x       +y       +y
+        |         |                                     | -0.08    1.65     -10.00
+
+E577    | -6.25   | too far from path                   | -y       +0       -y       +y
+        |         |                                     | -0.04    1.96     1.83     -10.00
+
+E578    | -8.19   | too far from path                   | -y       +z       -x
+        |         |                                     | -0.05    1.85     -10.00
+
+E579    | -8.36   | too far from path                   | -z       -x       -y
+        |         |                                     | -0.03    1.68     -10.00
+
+E580    | -6.12   | too far from path                   | -z       +0       +z       -y
+        |         |                                     | -0.03    1.97     1.95     -10.00
+
+E581    | -8.38   | too far from path                   | -y       +x       -y
+        |         |                                     | -0.04    1.66     -10.00
+
+E582    | -6.25   | too far from path                   | +y       +z       +0       -z
+        |         |                                     | -0.12    1.93     1.93     -10.00
+
+E583    | -8.41   | too far from path                   | +y       +x       +y
+        |         |                                     | -0.11    1.70     -10.00
+
+E584    | -8.31   | too far from path                   | +z       -y       -y
+        |         |                                     | -0.03    1.73     -10.00
+
+E585    | -4.74   | too far from path                   | +0       -z       +y       +0       -x
+        |         |                                     | -0.01    1.97     1.65     1.66     -10.00
+
+E586    | -8.38   | too far from path                   | -y       -x       -y
+        |         |                                     | -0.05    1.66     -10.00
+
+E587    | -6.38   | too far from path                   | -z       +0       -x       -y
+        |         |                                     | -0.03    1.96     1.68     -10.00
+
+E588    | -4.17   | too far from path                   | +0       -z       -z       +0       -z
+        |         |                                     | -0.03    1.97     1.94     1.94     -10.00
+
+E589    | -8.38   | too far from path                   | -x       -y       -y
+        |         |                                     | -0.09    1.70     -10.00
+
+E590    | -8.10   | too far from path                   | +z       -z       +y
+        |         |                                     | -0.03    1.94     -10.00
+
+E591    | -6.35   | too far from path                   | +0       +z       +x       +x
+        |         |                                     | -0.00    1.96     1.69     -10.00
+
+E592    | -8.38   | too far from path                   | -x       -y       -x
+        |         |                                     | -0.08    1.70     -10.00
+
+E593    | -4.38   | too far from path                   | -x       +z       +0       +0       +z
+        |         |                                     | -0.09    1.90     1.90     1.90     -10.00
+
+E594    | -6.25   | too far from path                   | -y       +0       -z       -x
+        |         |                                     | -0.04    1.96     1.84     -10.00
+
+E595    | -4.75   | too far from path                   | +x       +x       +0       +0       -z
+        |         |                                     | -0.09    1.77     1.78     1.78     -10.00
+
+E596    | -8.19   | too far from path                   | -y       +z       -z
+        |         |                                     | -0.05    1.85     -10.00
+
+E597    | -8.45   | too far from path                   | +y       -x       -x
+        |         |                                     | -0.12    1.66     -10.00
+
+E598    | -8.39   | too far from path                   | +z       +y       +y
+        |         |                                     | -0.03    1.64     -10.00
+
+E599    | -6.18   | too far from path                   | -x       +0       +z       -z
+        |         |                                     | -0.04    1.96     1.90     -10.00
+
+E600    | -8.45   | too far from path                   | +y       -x       -x
+        |         |                                     | -0.11    1.66     -10.00
+
+E601    | -8.31   | too far from path                   | -z       -y       -x
+        |         |                                     | -0.03    1.73     -10.00
+
+E602    | -8.35   | too far from path                   | -z       +x       +y
+        |         |                                     | -0.03    1.68     -10.00
+
+E603    | -6.14   | too far from path                   | -z       +z       +0       -x
+        |         |                                     | -0.03    1.95     1.95     -10.00
+
+E604    | -8.08   | too far from path                   | -z       -z       -y
+        |         |                                     | -0.03    1.95     -10.00
+
+E605    | -6.33   | too far from path                   | +0       -x       -x       -z
+        |         |                                     | -0.01    1.91     1.77     -10.00
+
+E606    | -8.38   | too far from path                   | -x       -y       -z
+        |         |                                     | -0.08    1.70     -10.00
+
+E607    | -6.09   | too far from path                   | -z       -z       -x
+        |         |                                     | 1.97     1.95     -10.00
+
+E608    | -8.18   | too far from path                   | -x       -z       +z
+        |         |                                     | -0.09    1.90     -10.00
+
+E609    | -8.39   | too far from path                   | -y       +x       -z
+        |         |                                     | -0.05    1.66     -10.00
+
+E610    | -6.33   | too far from path                   | +0       +x       +x       -x
+        |         |                                     | -0.01    1.91     1.78     -10.00
+
+E611    | -4.65   | too far from path                   | +y       +0       +0       +x       +y
+        |         |                                     | -0.11    1.89     1.88     1.69     -10.00
+
+E612    | -8.37   | too far from path                   | -x       -y       -x
+        |         |                                     | -0.08    1.71     -10.00
+
+E613    | -8.10   | too far from path                   | +z       +z       +y
+        |         |                                     | -0.03    1.93     -10.00
+
+E614    | -6.25   | too far from path                   | -y       +0       -z       -y
+        |         |                                     | -0.04    1.96     1.84     -10.00
+
+E615    | -6.20   | too far from path                   | +0       -y       -z       -y
+        |         |                                     | -0.01    1.95     1.86     -10.00
+
+E616    | -8.30   | too far from path                   | +z       -y       +z
+        |         |                                     | -0.03    1.73     -10.00
+
+E617    | -6.14   | too far from path                   | -z       -z       +0       +y
+        |         |                                     | -0.03    1.95     1.95     -10.00
+
+E618    | -6.78   | too far from path                   | -x       +y       +0       +x
+        |         |                                     | -0.08    1.65     1.65     -10.00
+
+E619    | -8.39   | too far from path                   | -y       +x       -z
+        |         |                                     | -0.04    1.66     -10.00
+
+E620    | -8.18   | too far from path                   | +y       +z       +y
+        |         |                                     | -0.11    1.93     -10.00
+
+E621    | -4.17   | too far from path                   | +0       +z       -z       +0       +y
+        |         |                                     | -0.01    1.97     1.94     1.94     -10.00
+
+E622    | -6.17   | too far from path                   | +z       -z       +0       -y
+        |         |                                     | -0.03    1.93     1.93     -10.00
+
+E623    | -8.31   | too far from path                   | -z       -y       -y
+        |         |                                     | -0.03    1.73     -10.00
+
+E624    | -6.38   | too far from path                   | +z       +0       +x       +y
+        |         |                                     | -0.03    1.96     1.69     -10.00
+
+E625    | -8.41   | too far from path                   | -x       +x       +z
+        |         |                                     | -0.03    1.62     -10.00
+
+E626    | -6.56   | too far from path                   | -x       -x       +0       +y
+        |         |                                     | -0.08    1.76     1.77     -10.00
+
+E627    | -8.37   | too far from path                   | +x       -y       +x
+        |         |                                     | -0.09    1.72     -10.00
+
+E628    | -8.09   | too far from path                   | -z       +z       +z
+        |         |                                     | -0.03    1.95     -10.00
+
+E629    | -6.28   | too far from path                   | -x       +z       +0       +y
+        |         |                                     | -0.09    1.90     1.90     -10.00
+
+E630    | -4.44   | too far from path                   | -z       +0       +0       +y       -z
+        |         |                                     | -0.03    1.96     1.96     1.67     -10.00
+
+E631    | -8.18   | too far from path                   | -x       -z       -x
+        |         |                                     | -0.09    1.90     -10.00
+
+E632    | -8.35   | too far from path                   | -z       +x       +x
+        |         |                                     | -0.03    1.68     -10.00
+
+E633    | -3.22   | too far from path                   | -z       +x       +0       +0       +0       -x
+        |         |                                     | -0.03    1.70     1.70     1.70     1.71     -10.00
+
+E634    | -6.10   | too far from path                   | +0       +z       +z       +y
+        |         |                                     | -0.00    1.97     1.93     -10.00
+
+E635    | -8.23   | too far from path                   | -y       -y       -y
+        |         |                                     | -0.04    1.82     -10.00
+
+E636    | -8.31   | too far from path                   | +x       +x       -x
+        |         |                                     | -0.09    1.78     -10.00
+
+E637    | -8.39   | too far from path                   | -y       +x       +x
+        |         |                                     | -0.05    1.66     -10.00
+
+E638    | -6.78   | too far from path                   | -x       +y       +0       +y
+        |         |                                     | -0.09    1.65     1.65     -10.00
+
+E639    | -8.48   | too far from path                   | -x       +x       -y
+        |         |                                     | -0.09    1.61     -10.00
+
+E640    | -8.31   | too far from path                   | -z       -y       -z
+        |         |                                     | -0.03    1.73     -10.00
+
+E641    | -8.48   | too far from path                   | -x       +x       +x
+        |         |                                     | -0.08    1.61     -10.00
+
+E642    | -8.45   | too far from path                   | +y       -x       +z
+        |         |                                     | -0.11    1.66     -10.00
+
+E643    | -2.51   | too far from path                   | +0       +x       -z       +0       +0       +x
+        |         |                                     | -0.03    1.91     1.87     1.87     1.88     -10.00
+
+E644    | -8.30   | too far from path                   | +z       -y       -z
+        |         |                                     | -0.03    1.73     -10.00
+
+E645    | -6.68   | too far from path                   | +z       -x       +0       +y
+        |         |                                     | -0.03    1.68     1.68     -10.00
+
+E646    | -6.33   | too far from path                   | +x       +0       -z       -y
+        |         |                                     | -0.09    1.91     1.85     -10.00
+
+E647    | -4.22   | too far from path                   | +0       +0       -y       +z       +z
+        |         |                                     | -0.00    2.00     1.94     1.85     -10.00
+
+E648    | -6.14   | too far from path                   | +0       +z       +z       +z
+        |         |                                     | -0.04    1.96     1.93     -10.00
+
+E649    | -6.69   | too far from path                   | +z       -x       +0       -y
+        |         |                                     | -0.04    1.67     1.68     -10.00
+
+E650    | -6.91   | too far from path                   | +x       -x       +0       -x
+        |         |                                     | -0.09    1.59     1.59     -10.00
+
+E651    | -8.30   | too far from path                   | +z       -y       -y
+        |         |                                     | -0.03    1.73     -10.00
+
+E652    | -6.35   | too far from path                   | +0       -z       +x       +x
+        |         |                                     | -0.01    1.97     1.69     -10.00
+
+E653    | -6.73   | too far from path                   | -z       +y       +0       -y
+        |         |                                     | -0.03    1.65     1.65     -10.00
+
+E654    | -8.35   | too far from path                   | +z       +x       +y
+        |         |                                     | -0.03    1.69     -10.00
+
+E655    | -8.45   | too far from path                   | +y       -x       -y
+        |         |                                     | -0.11    1.66     -10.00
+
+E656    | -3.39   | too far from path                   | -z       +y       +0       +0       +0       -x
+        |         |                                     | -0.03    1.65     1.66     1.66     1.67     -10.00
+
+E657    | -6.33   | too far from path                   | +x       +0       -z       +x
+        |         |                                     | -0.09    1.91     1.85     -10.00
+
+E658    | -8.10   | too far from path                   | +z       -z       -y
+        |         |                                     | -0.03    1.94     -10.00
+
+E659    | -8.47   | too far from path                   | -x       +x       +z
+        |         |                                     | -0.08    1.61     -10.00
+
+E660    | -6.48   | too far from path                   | +0       -x       +x       +z
+        |         |                                     | -0.00    1.91     1.61     -10.00
+
+E661    | -6.42   | too far from path                   | +0       -y       +x       -x
+        |         |                                     | -0.03    1.95     1.66     -10.00
+
+E662    | -8.31   | too far from path                   | +z       -y       +z
+        |         |                                     | -0.03    1.73     -10.00
+
+E663    | -0.34   | too far from path                   | +z       -z       +0       +0       +0       +0       +z
+        |         |                                     | -0.03    1.94     1.94     1.94     1.94     1.94     -10.00
+
+E664    | -8.38   | too far from path                   | -y       +x       -z
+        |         |                                     | -0.04    1.66     -10.00
+
+E665    | -8.37   | too far from path                   | +x       -y       +z
+        |         |                                     | -0.09    1.71     -10.00
+
+E666    | -8.23   | too far from path                   | -y       -y       -x
+        |         |                                     | -0.05    1.82     -10.00
+
+E667    | -4.84   | too far from path                   | -z       -y       +0       +0       +y
+        |         |                                     | -0.03    1.73     1.73     1.74     -10.00
+
+E668    | -8.48   | too far from path                   | +y       -y       +x
+        |         |                                     | -0.11    1.63     -10.00
+
+E669    | -6.22   | too far from path                   | +0       -y       -z       -z
+        |         |                                     | -0.02    1.95     1.86     -10.00
+
+E670    | -4.72   | too far from path                   | +0       -z       +y       +0       +z
+        |         |                                     | -0.01    1.97     1.66     1.66     -10.00
+
+E671    | -6.48   | too far from path                   | +x       +0       -y       -x
+        |         |                                     | -0.09    1.91     1.70     -10.00
+
+E672    | -8.09   | too far from path                   | -z       +z       -y
+        |         |                                     | -0.03    1.95     -10.00
+
+E673    | -8.34   | too far from path                   | -z       +x       -z
+        |         |                                     | -0.03    1.69     -10.00
+
+E674    | -8.18   | too far from path                   | -x       +z       -y
+        |         |                                     | -0.08    1.91     -10.00
+
+E675    | -6.58   | too far from path                   | +z       -y       +0       +x
+        |         |                                     | -0.03    1.72     1.73     -10.00
+
+E676    | -4.44   | too far from path                   | +y       +0       -z       +0       +y
+        |         |                                     | -0.11    1.88     1.90     1.90     -10.00
+
+E677    | -6.72   | too far from path                   | -y       -x       +0       +y
+        |         |                                     | -0.04    1.66     1.67     -10.00
+
+E678    | -6.38   | too far from path                   | -z       +0       +x       +z
+        |         |                                     | -0.04    1.96     1.70     -10.00
+
+E679    | -8.23   | too far from path                   | -y       -y       +z
+        |         |                                     | -0.05    1.82     -10.00
+
+E680    | -6.37   | too far from path                   | +0       +z       +x       +y
+        |         |                                     | -0.01    1.97     1.68     -10.00
+
+E681    | -8.10   | too far from path                   | +z       -z       -z
+        |         |                                     | -0.03    1.93     -10.00
+
+E682    | -4.55   | too far from path                   | -y       -y       +0       +0       -x
+        |         |                                     | -0.04    1.83     1.83     1.83     -10.00
+
+E683    | -0.98   | too far from path                   | +0       -z       +0       +x       +0       +0       -x
+        |         |                                     | -0.00    1.97     1.97     1.69     1.70     1.70     -10.00
+
+E684    | -8.39   | too far from path                   | -y       -x       +y
+        |         |                                     | -0.05    1.65     -10.00
+
+E685    | -6.32   | too far from path                   | +x       -z       +0       -z
+        |         |                                     | -0.09    1.88     1.88     -10.00
+

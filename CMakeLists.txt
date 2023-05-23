@@ -487,3 +487,4 @@ add_custom_target(install_python_requirements
 	DEPENDS ${PX4_SOURCE_DIR}/Tools/setup/requirements.txt
 	USES_TERMINAL
 )
+

@@ -1,0 +1,4 @@
+Episode | Reward  | Done Reason                         | Timestep Actions/Rewards
+E1      | -5.00   | speed{2.34}>thresh_speed{2.00}      | -z
+        |         |                                     | -5.00
+

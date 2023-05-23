@@ -1,0 +1,4 @@
+Episode | Reward  | Done Reason                         | Timestep Actions/Rewards
+E1      | -39.02  | dist2path{95.72}>thresh_dist{4.00}  | -z       +x       -z       +x       -y       +0       +x
+        |         |                                     | -0.50    1.40     24.55    3.94     -25.73   -32.69   -10.00
+
