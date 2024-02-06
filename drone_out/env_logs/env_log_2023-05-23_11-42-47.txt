@@ -1,0 +1,10 @@
+Episode | Reward  | Done Reason                         | Timestep Actions/Rewards
+E1      | 4.03    | too far from path                   | +0       +x       -z       +y       +y       +0       +y       -y       +x       -z       +y       -x       +z       -z       +z       -y
+        |         |                                     | -0.80    1.83     1.13     1.15     1.15     1.16     1.16     1.24     1.22     1.18     1.13     1.17     1.16     1.13     -0.97    -10.00
+
+E2      | -100.00 | collision                           | +y
+        |         |                                     | -100.00
+
+E3      | -100.00 | collision                           | +0       +y
+        |         |                                     | -0.00    -100.00
+

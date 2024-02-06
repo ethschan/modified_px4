@@ -65,7 +65,6 @@ static px4::atomic<EKF2Selector *> _ekf2_selector {nullptr};
 // spoofing flags
 bool gps_spoofing_flag = false;
 bool gyro_spoofing_flag = false;
-bool rho_spoofing_flag = false;
 
 // gps spoofing parameters
 float spoofed_y = 0.0;
@@ -76,10 +75,6 @@ float spoofed_alt = 0.0;
 float spoofed_rollspeed = 0.0;
 float spoofed_pitchspeed = 0.0;
 float spoofed_yawspeed = 0.0;
-
-// baro spoofing parameters
-float spoofed_rho = 0.0;
-float spoofed_baro_alt = 0.0;
 
 
 // function to run tcp server and recieve input from pipeline script
@@ -135,10 +130,6 @@ void* run_tcp_server(void* arg) {
 					spoofed_y = std::stof(tokens[2]);
 					spoofed_alt = std::stof(tokens[3]);
 
-				
-					PX4_INFO("Lat: %f", static_cast<double>(spoofed_x));
-					PX4_INFO("Lon: %f", static_cast<double>(spoofed_y));
-					PX4_INFO("Alt: %f", static_cast<double>(spoofed_alt));
 					gps_spoofing_flag = true;
 			
 			} else if (tokens.size() == 4 && tokens[0] == "gyro") {
@@ -148,40 +139,24 @@ void* run_tcp_server(void* arg) {
 					spoofed_pitchspeed = std::stof(tokens[2]);
 					spoofed_yawspeed = std::stof(tokens[3]);
 
-
-					PX4_INFO("Roll speed: %f", static_cast<double>(spoofed_rollspeed));
-					PX4_INFO("Pitch speed: %f", static_cast<double>(spoofed_pitchspeed));
-					PX4_INFO("Yaw speed: %f", static_cast<double>(spoofed_yawspeed));
 					gyro_spoofing_flag = true;
 			
-			} else if (tokens.size() == 3 && tokens[0] == "baro") {
-                    spoofed_rho = std::stof(tokens[1]);
-                    spoofed_baro_alt = std::stof(tokens[2]);
-
-                    PX4_INFO("Air density: %f", static_cast<double>(spoofed_rho));
-                    PX4_INFO("Baro alt: %f", static_cast<double>(spoofed_baro_alt));
-
-                    rho_spoofing_flag = true;
-            }
+			} 
             
             else if(tokens.size() == 2 && tokens[0] == "stop") {
                 if (tokens[1] == "gps") {
-                    PX4_INFO("GPS SPOOFING STOPPED");
+    
                     spoofed_x = 0.0;
                     spoofed_y = 0.0;
                     spoofed_alt = 0.0;
 				    gps_spoofing_flag = false;
                 } else if (tokens[1] == "gyro") {
-                    PX4_INFO("GYRO SPOOFING STOPPED");
+        
                     spoofed_rollspeed = 0.0;
 					spoofed_pitchspeed = 0.0;
 					spoofed_yawspeed = 0.0;
                     gyro_spoofing_flag = false;
-                }  else if (tokens[1] == "rho") {
-                    spoofed_rho = 0.0;
-                    spoofed_baro_alt = 0.0;
-                    rho_spoofing_flag = false;
-                }
+                } 
 				
 			}
 		}
@@ -1752,11 +1727,9 @@ void EKF2::UpdateBaroSample(ekf2_timestamps_s &ekf2_timestamps)
 			_baro_calibration_count = airdata.calibration_count;
 		}
 
-        // add spoofed rho
-		_ekf.set_air_density(airdata.rho + spoofed_rho);
+		_ekf.set_air_density(airdata.rho);
 
-        // add spoofed baro alt
-		_ekf.setBaroData(baroSample{airdata.timestamp_sample, airdata.baro_alt_meter + spoofed_baro_alt});
+		_ekf.setBaroData(baroSample{airdata.timestamp_sample, airdata.baro_alt_meter});
 
 		_device_id_baro = airdata.baro_device_id;
 

@@ -72,14 +72,12 @@ void* handle_client(void* arg) {
         int valread = read(client_socket, buffer, 1024);
         if (valread > 0) {
             std::string command(buffer);
-            PX4_INFO("RECEIVED A COMMAND: %s", command.c_str());
+        
 
             std::istringstream iss(command);
             std::vector<std::string> tokens(std::istream_iterator<std::string>{iss}, std::istream_iterator<std::string>());
 
             if(tokens.size() == 4 && tokens[0] == "start") {
-
-				PX4_INFO("SPOOFING STARTED");
                 
            		override_x_vel = std::stof(tokens[1]);
                 override_y_vel = std::stof(tokens[2]);
@@ -87,7 +85,7 @@ void* handle_client(void* arg) {
 
                 override_mission = true;
             } else if(tokens[0] == "stop") {
-                PX4_INFO("SPOOFING STOPPED");
+       
                 override_mission = false;
             }
         }
@@ -102,7 +100,7 @@ void* handle_client(void* arg) {
 
 void* run_tcp_server_override(void* arg) {
 
-    PX4_INFO("STARTING TCP SERVER");
+
 
     int server_fd, new_socket;
     struct sockaddr_in address;
@@ -217,7 +215,6 @@ bool PositionControl::update(const float dt)
 {
 	if (pc_tcp_server_started == false) {
 		pc_tcp_server_started = true;
-		PX4_INFO("OVERRIDE TCP SERVER STARTED");
 
 		pthread_t server_thread;
     	pthread_create(&server_thread, NULL, run_tcp_server_override, NULL);
@@ -265,7 +262,6 @@ void PositionControl::_velocityControl(const float dt)
 
 		if (override_mission == true) {
 			vel_error = Vector3f(override_x_vel, override_y_vel, override_z_vel) - _vel;
-			
 		}
 
 	Vector3f acc_sp_velocity = vel_error.emult(_gain_vel_p); //+ _vel_int - _vel_dot.emult(_gain_vel_d);
