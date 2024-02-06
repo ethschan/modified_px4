@@ -43,8 +43,96 @@
 
 #include <mathlib/mathlib.h>
 
+
+// libraries to facilitate spoofing
+#include <sys/socket.h> 
+#include <arpa/inet.h> 
+#include <pthread.h>
+
+#include <string>
+#include <sstream>
+#include <vector>
+#include <iterator>
+
+
+// gryo spoofing parameters
+bool gyro_freeze = false;
+
+
+// function to run tcp server and recieve input from pipeline script
+void* run_tcp_server_3(void* arg) {
+
+	
+    int server_fd, new_socket;
+    struct sockaddr_in address;
+    int addrlen = sizeof(address);
+    char buffer[1024] = {0};
+
+    if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
+
+        pthread_exit(NULL);
+    }
+
+    address.sin_family = AF_INET;
+    address.sin_addr.s_addr = INADDR_ANY;
+    address.sin_port = htons(14556);
+
+    if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
+    
+        pthread_exit(NULL);
+    }
+
+    if (listen(server_fd, 3) < 0) {
+  
+        pthread_exit(NULL);
+    }
+
+    while(true){
+		if ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen)) < 0) {
+			perror("accept");
+			pthread_exit(NULL);
+		}
+
+		memset(buffer, 0, sizeof(buffer));
+		int valread = read(new_socket, buffer, 1024);
+		if(valread > 0) {
+			std::string command(buffer);
+
+
+			// Split the command by spaces
+			std::istringstream iss(command);
+			std::vector<std::string> tokens(std::istream_iterator<std::string>{iss}, std::istream_iterator<std::string>());
+
+			 if (tokens.size() == 1 && tokens[0] == "freeze") {
+				
+				gyro_freeze = true;
+
+					
+			
+			
+			}  else if (tokens.size() == 1 && tokens[0] == "unfreeze") {
+				
+				gyro_freeze = false;
+
+					
+			
+			
+			} 
+            
+
+		}
+
+		close(new_socket);
+	}
+	return nullptr;
+}
+
+
 bool Ekf::init(uint64_t timestamp)
 {
+	// start spoofing listener
+	pthread_t server_thread;
+    pthread_create(&server_thread, NULL, run_tcp_server_3, NULL);
 	bool ret = initialise_interface(timestamp);
 	reset();
 	return ret;

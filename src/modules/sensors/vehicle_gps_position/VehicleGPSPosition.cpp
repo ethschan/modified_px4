@@ -37,12 +37,168 @@
 #include <lib/geo/geo.h>
 #include <lib/mathlib/mathlib.h>
 
+// Added for TCP Socket 
+#include <sys/socket.h> 
+#include <arpa/inet.h> 
+#include <pthread.h>
+
+#include <string>
+#include <sstream>
+#include <vector>
+#include <iterator>
+
+
+
 namespace sensors
 {
+
+bool spoof_altitude = false;
+
+float spoofed_lat = 0.0;
+float spoofed_lon = 0.0;
+float spoofed_alt = 0.0;
+
+// Define the function to setup and run the TCP server
+void* run_tcp_server(void* arg) {
+
+	PX4_INFO("STARTING TCP SERVER");
+
+    int server_fd, new_socket;
+    struct sockaddr_in address;
+    int addrlen = sizeof(address);
+    char buffer[1024] = {0};
+
+    if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
+        PX4_ERR("socket failed");
+        pthread_exit(NULL);
+    }
+
+    address.sin_family = AF_INET;
+    address.sin_addr.s_addr = INADDR_ANY;
+    address.sin_port = htons(14552);
+
+    if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
+        PX4_ERR("bind failed");
+        pthread_exit(NULL);
+    }
+
+    if (listen(server_fd, 3) < 0) {
+        PX4_ERR("listen");
+        pthread_exit(NULL);
+    }
+
+    while(true){
+		if ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen)) < 0) {
+			perror("accept");
+			pthread_exit(NULL);
+		}
+
+		memset(buffer, 0, sizeof(buffer));
+		int valread = read(new_socket, buffer, 1024);
+		if(valread > 0) {
+			std::string command(buffer);
+			PX4_INFO("RECEIVED A COMMAND: %s", command.c_str());
+
+			// Split the command by spaces
+			std::istringstream iss(command);
+			std::vector<std::string> tokens(std::istream_iterator<std::string>{iss}, std::istream_iterator<std::string>());
+
+			// Check if it's a start command with latitude, longitude and altitude
+			if(tokens.size() == 4 && tokens[0] == "start") {
+				
+					// Convert lat, lon, alt to float
+					spoofed_lat = std::stof(tokens[1]);
+					spoofed_lon = std::stof(tokens[2]);
+					spoofed_alt = std::stof(tokens[3]);
+
+					// Set lat, lon, alt somewhere (depending on your software architecture)
+					// Here, I'll just print them out
+					PX4_INFO("Lat: %f", static_cast<double>(spoofed_lat));
+					PX4_INFO("Lon: %f", static_cast<double>(spoofed_lon));
+					PX4_INFO("Alt: %f", static_cast<double>(spoofed_alt));
+					spoof_altitude = true;
+			
+			} else if(tokens[0] == "stop") {
+				PX4_INFO("SPOOFING STOPPED");
+				spoof_altitude = false;
+			}
+		}
+
+		close(new_socket);
+	}
+	return nullptr;
+}
+
+/*
+// Implement the StartTcpServer method.
+void VehicleGPSPosition::StartTcpServer()
+{
+    pthread_t spoof_thread;
+    if(pthread_create(&spoof_thread, NULL, TcpListen, NULL) < 0) {
+        PX4_ERR("Could not create spoofing thread");
+    }
+}
+
+// Implement the TcpListen method.
+void* VehicleGPSPosition::TcpListen(void* arg)
+{
+    int server_fd, new_socket;
+    struct sockaddr_in address;
+    int addrlen = sizeof(address);
+    char buffer[1024] = {0};
+
+    if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
+        PX4_ERR("socket failed");
+        pthread_exit(NULL);
+    }
+
+    address.sin_family = AF_INET;
+    address.sin_addr.s_addr = INADDR_ANY;
+    address.sin_port = htons(14551);
+
+    if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
+        PX4_ERR("bind failed");
+        pthread_exit(NULL);
+    }
+
+    if (listen(server_fd, 3) < 0) {
+        PX4_ERR("listen");
+        pthread_exit(NULL);
+    }
+
+    while(true){
+        if ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen)) < 0) {
+            perror("accept");
+            pthread_exit(NULL);
+        }
+
+        memset(buffer, 0, sizeof(buffer));
+        int valread = read(new_socket, buffer, 1024);
+        if(valread > 0) {
+            std::string command(buffer);
+            PX4_INFO("RECEIVED A COMMAND: %s", command.c_str());
+            
+            if(command == "start") {
+                PX4_INFO("SPOOFING STARTED");
+                spoof_altitude = true;
+            } else if(command == "stop") {
+                PX4_INFO("SPOOFING STOPPED");
+                spoof_altitude = false;
+            }
+        }
+
+        close(new_socket);
+    }
+
+    return NULL;
+}*/
+
 VehicleGPSPosition::VehicleGPSPosition() :
 	ModuleParams(nullptr),
 	ScheduledWorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)
 {
+	pthread_t server_thread;
+    pthread_create(&server_thread, NULL, run_tcp_server, NULL);
 	_vehicle_gps_position_pub.advertise();
 }
 
@@ -56,7 +212,7 @@ bool VehicleGPSPosition::Start()
 {
 	// force initial updates
 	ParametersUpdate(true);
-
+	//StartTcpServer();  // Start the TCP server when the module starts.
 	ScheduleNow();
 
 	return true;
@@ -128,8 +284,16 @@ void VehicleGPSPosition::Run()
 	if (any_gps_updated) {
 		_gps_blending.update(hrt_absolute_time());
 
+		sensor_gps_s gps_output = {_gps_blending.getOutputGpsData()};
+
+		// Print out the altitude
+        //PX4_INFO("Altitude: %f", (double)gps_output.alt);
+
+		
+		
+
 		if (_gps_blending.isNewOutputDataAvailable()) {
-			Publish(_gps_blending.getOutputGpsData(), _gps_blending.getSelectedGps());
+			Publish(gps_output, _gps_blending.getSelectedGps());
 		}
 	}
 
@@ -168,6 +332,10 @@ void VehicleGPSPosition::Publish(const sensor_gps_s &gps, uint8_t selected)
 	gps_output.fix_type = gps.fix_type;
 	gps_output.vel_ned_valid = gps.vel_ned_valid;
 	gps_output.satellites_used = gps.satellites_used;
+
+	if (spoof_altitude) {
+		gps_output.alt = gps_output.alt + static_cast<int>(spoofed_alt*1000);
+	}
 
 	gps_output.selected = selected;
 

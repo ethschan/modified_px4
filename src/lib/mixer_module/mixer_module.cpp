@@ -38,7 +38,119 @@
 #include <uORB/Publication.hpp>
 #include <px4_platform_common/log.h>
 
+// Added for TCP Socket 
+#include <sys/socket.h> 
+#include <arpa/inet.h> 
+#include <pthread.h>
+
+#include <string>
+#include <sstream>
+#include <vector>
+#include <iterator>
+
 using namespace time_literals;
+
+
+bool actuator_override = false;
+bool actuator_tcp_server_started = false;
+int motor_0 = 0;
+int motor_1 = 0;
+int motor_2 = 0;
+int motor_3 = 0;
+
+
+void* actuator_handle_client(void* arg) {
+    int client_socket = *(int*)arg;
+    char buffer[1024] = {0};
+
+    while (true) {
+        memset(buffer, 0, sizeof(buffer));
+        int valread = read(client_socket, buffer, 1024);
+        if (valread > 0) {
+            std::string command(buffer);
+            PX4_INFO("RECEIVED A COMMAND: %s", command.c_str());
+
+            std::istringstream iss(command);
+            std::vector<std::string> tokens(std::istream_iterator<std::string>{iss}, std::istream_iterator<std::string>());
+
+            if(tokens.size() == 5 && tokens[0] == "start") {
+
+				PX4_INFO("ACTUATOR COMMAND RECIVED STARTED");
+                
+           		motor_0 = std::stof(tokens[1]);
+                motor_1 = std::stof(tokens[2]);
+                motor_2 = std::stof(tokens[3]);
+				motor_3 = std::stof(tokens[4]);
+
+                actuator_override = true;
+            } else if(tokens[0] == "stop") {
+                PX4_INFO("SPOOFING STOPPED");
+                actuator_override = false;
+            }
+        }
+        else {
+            close(client_socket);
+            break;
+        }
+    }
+
+    return nullptr;
+}
+
+void* run_tcp_server_actuators(void* arg) {
+
+    PX4_INFO("STARTING TCP SERVER");
+
+    int server_fd, new_socket;
+    struct sockaddr_in address;
+    int addrlen = sizeof(address);
+
+    if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
+        PX4_ERR("socket failed");
+        pthread_exit(NULL);
+    }
+
+    int optval = 1;
+    socklen_t optlen = sizeof(optval);
+
+    if(setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &optval, optlen) < 0) {
+        PX4_ERR("setsockopt failed");
+        close(server_fd);
+        pthread_exit(NULL);
+    }
+
+    if(setsockopt(server_fd, SOL_SOCKET, SO_KEEPALIVE, &optval, optlen) < 0) {
+        PX4_ERR("setsockopt failed");
+        close(server_fd);
+        pthread_exit(NULL);
+    }
+
+    address.sin_family = AF_INET;
+    address.sin_addr.s_addr = INADDR_ANY;
+    address.sin_port = htons(14555);
+
+    if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
+        PX4_ERR("bind failed");
+        pthread_exit(NULL);
+    }
+
+    if (listen(server_fd, 3) < 0) {
+        PX4_ERR("listen");
+        pthread_exit(NULL);
+    }
+
+    while(true){
+        if ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen)) < 0) {
+            perror("accept");
+            pthread_exit(NULL);
+        }
+
+        pthread_t client_thread;
+        pthread_create(&client_thread, NULL, actuator_handle_client, &new_socket);
+    }
+
+    return nullptr;
+}
 
 
 struct FunctionProvider {
@@ -83,6 +195,16 @@ _interface(interface),
 _control_latency_perf(perf_alloc(PC_ELAPSED, "control latency")),
 _param_prefix(param_prefix)
 {
+
+	/* start tcp server */
+	if (actuator_tcp_server_started == false) {
+		actuator_tcp_server_started = true;
+		PX4_INFO("OVERRIDE TCP SERVER STARTED");
+
+		pthread_t server_thread;
+    	pthread_create(&server_thread, NULL, run_tcp_server_actuators, NULL);
+	}
+
 	/* Safely initialize armed flags */
 	_armed.armed = false;
 	_armed.prearmed = false;
@@ -1011,7 +1133,21 @@ MixingOutput::setAndPublishActuatorOutputs(unsigned num_outputs, actuator_output
 	actuator_outputs.noutputs = num_outputs;
 
 	for (size_t i = 0; i < num_outputs; ++i) {
+
+		// Print the current output value for this channel
+        //PX4_INFO("Actuator %zu: %d", i, _current_output_value[i]);
+
 		actuator_outputs.output[i] = _current_output_value[i];
+
+	}
+
+
+	if (actuator_override) {
+		PX4_INFO("OUTPUT ACTUATORS");
+		actuator_outputs.output[0] = motor_0;
+		actuator_outputs.output[1] = motor_1;
+		actuator_outputs.output[2] = motor_2;
+		actuator_outputs.output[3] = motor_3;
 	}
 
 	actuator_outputs.timestamp = hrt_absolute_time();

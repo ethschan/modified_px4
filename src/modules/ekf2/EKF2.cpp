@@ -39,11 +39,157 @@ using matrix::Eulerf;
 using matrix::Quatf;
 using matrix::Vector3f;
 
+// libraries to facilitate spoofing
+#include <sys/socket.h> 
+#include <arpa/inet.h> 
+#include <pthread.h>
+
+#include <string>
+#include <sstream>
+#include <vector>
+#include <iterator>
+
+#include <cmath>
+
+// Constants for WGS 84
+const double EARTH_RADIUS_EQUATOR = 6378137.0; // in meters
+const double WGS84_FLATTENING = 1.0 / 298.257223563;
+const double PI = 3.14159265358979323846; // PI as a double
+
 pthread_mutex_t ekf2_module_mutex = PTHREAD_MUTEX_INITIALIZER;
 static px4::atomic<EKF2 *> _objects[EKF2_MAX_INSTANCES] {};
 #if !defined(CONSTRAINED_FLASH)
 static px4::atomic<EKF2Selector *> _ekf2_selector {nullptr};
 #endif // !CONSTRAINED_FLASH
+
+// spoofing flags
+bool gps_spoofing_flag = false;
+bool gyro_spoofing_flag = false;
+bool rho_spoofing_flag = false;
+
+// gps spoofing parameters
+float spoofed_y = 0.0;
+float spoofed_x = 0.0;
+float spoofed_alt = 0.0;
+
+// gryo spoofing parameters
+float spoofed_rollspeed = 0.0;
+float spoofed_pitchspeed = 0.0;
+float spoofed_yawspeed = 0.0;
+
+// baro spoofing parameters
+float spoofed_rho = 0.0;
+float spoofed_baro_alt = 0.0;
+
+
+// function to run tcp server and recieve input from pipeline script
+void* run_tcp_server(void* arg) {
+
+	PX4_INFO("STARTING TCP SERVER");
+
+    int server_fd, new_socket;
+    struct sockaddr_in address;
+    int addrlen = sizeof(address);
+    char buffer[1024] = {0};
+
+    if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
+        PX4_ERR("socket failed");
+        pthread_exit(NULL);
+    }
+
+    address.sin_family = AF_INET;
+    address.sin_addr.s_addr = INADDR_ANY;
+    address.sin_port = htons(14551);
+
+    if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
+        PX4_ERR("bind failed");
+        pthread_exit(NULL);
+    }
+
+    if (listen(server_fd, 3) < 0) {
+        PX4_ERR("listen");
+        pthread_exit(NULL);
+    }
+
+    while(true){
+		if ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen)) < 0) {
+			perror("accept");
+			pthread_exit(NULL);
+		}
+
+		memset(buffer, 0, sizeof(buffer));
+		int valread = read(new_socket, buffer, 1024);
+		if(valread > 0) {
+			std::string command(buffer);
+			PX4_INFO("RECEIVED A COMMAND: %s", command.c_str());
+
+			// Split the command by spaces
+			std::istringstream iss(command);
+			std::vector<std::string> tokens(std::istream_iterator<std::string>{iss}, std::istream_iterator<std::string>());
+
+			// Check if it's a start command with latitude, longitude and altitude
+			if(tokens.size() == 4 && tokens[0] == "gps") {
+				
+					
+					spoofed_x = std::stof(tokens[1]);
+					spoofed_y = std::stof(tokens[2]);
+					spoofed_alt = std::stof(tokens[3]);
+
+				
+					PX4_INFO("Lat: %f", static_cast<double>(spoofed_x));
+					PX4_INFO("Lon: %f", static_cast<double>(spoofed_y));
+					PX4_INFO("Alt: %f", static_cast<double>(spoofed_alt));
+					gps_spoofing_flag = true;
+			
+			} else if (tokens.size() == 4 && tokens[0] == "gyro") {
+				
+				
+					spoofed_rollspeed = std::stof(tokens[1]);
+					spoofed_pitchspeed = std::stof(tokens[2]);
+					spoofed_yawspeed = std::stof(tokens[3]);
+
+
+					PX4_INFO("Roll speed: %f", static_cast<double>(spoofed_rollspeed));
+					PX4_INFO("Pitch speed: %f", static_cast<double>(spoofed_pitchspeed));
+					PX4_INFO("Yaw speed: %f", static_cast<double>(spoofed_yawspeed));
+					gyro_spoofing_flag = true;
+			
+			} else if (tokens.size() == 3 && tokens[0] == "baro") {
+                    spoofed_rho = std::stof(tokens[1]);
+                    spoofed_baro_alt = std::stof(tokens[2]);
+
+                    PX4_INFO("Air density: %f", static_cast<double>(spoofed_rho));
+                    PX4_INFO("Baro alt: %f", static_cast<double>(spoofed_baro_alt));
+
+                    rho_spoofing_flag = true;
+            }
+            
+            else if(tokens.size() == 2 && tokens[0] == "stop") {
+                if (tokens[1] == "gps") {
+                    PX4_INFO("GPS SPOOFING STOPPED");
+                    spoofed_x = 0.0;
+                    spoofed_y = 0.0;
+                    spoofed_alt = 0.0;
+				    gps_spoofing_flag = false;
+                } else if (tokens[1] == "gyro") {
+                    PX4_INFO("GYRO SPOOFING STOPPED");
+                    spoofed_rollspeed = 0.0;
+					spoofed_pitchspeed = 0.0;
+					spoofed_yawspeed = 0.0;
+                    gyro_spoofing_flag = false;
+                }  else if (tokens[1] == "rho") {
+                    spoofed_rho = 0.0;
+                    spoofed_baro_alt = 0.0;
+                    rho_spoofing_flag = false;
+                }
+				
+			}
+		}
+
+		close(new_socket);
+	}
+	return nullptr;
+}
 
 EKF2::EKF2(bool multi_mode, const px4::wq_config_t &config, bool replay_mode):
 	ModuleParams(nullptr),
@@ -165,6 +311,10 @@ EKF2::EKF2(bool multi_mode, const px4::wq_config_t &config, bool replay_mode):
 	_param_ekf2_synthetic_mag_z(_params->synthesize_mag_z),
 	_param_ekf2_gsf_tas_default(_params->EKFGSF_tas_default)
 {
+	// start spoofing listener
+	pthread_t server_thread;
+    pthread_create(&server_thread, NULL, run_tcp_server, NULL);
+
 	// advertise expected minimal topic set immediately to ensure logging
 	_attitude_pub.advertise();
 	_local_position_pub.advertise();
@@ -756,10 +906,27 @@ void EKF2::PublishGlobalPosition(const hrt_abstime &timestamp)
 		// Position of local NED origin in GPS / WGS84 frame
 		_ekf.global_origin().reproject(position(0), position(1), global_pos.lat, global_pos.lon);
 
+		if (gps_spoofing_flag) {
+			// Convert latitude from degrees to radians for calculation
+			double lat_rad = global_pos.lat * PI / 180.0;  // Using double for PI
+
+			// Calculate the radius of the Earth at the current latitude
+			double temp = 1.0 - WGS84_FLATTENING * sin(lat_rad) * sin(lat_rad);
+			double radius_at_latitude = EARTH_RADIUS_EQUATOR * sqrt(temp);
+
+			// Convert the offsets from meters to degrees
+			double latitude_offset_deg = static_cast<double>(spoofed_x) / 111320.0;
+			double longitude_offset_deg = static_cast<double>(spoofed_y) / (radius_at_latitude * cos(lat_rad) * PI / 180.0);
+
+			// Apply the offsets
+			global_pos.lat += latitude_offset_deg;
+			global_pos.lon += longitude_offset_deg;
+		}
+
 		float delta_xy[2];
 		_ekf.get_posNE_reset(delta_xy, &global_pos.lat_lon_reset_counter);
 
-		global_pos.alt = -position(2) + _ekf.getEkfGlobalOriginAltitude(); // Altitude AMSL in meters
+		global_pos.alt = -position(2) - spoofed_alt + _ekf.getEkfGlobalOriginAltitude(); // Altitude AMSL in meters
 		global_pos.alt_ellipsoid = filter_altitude_ellipsoid(global_pos.alt);
 
 		// global altitude has opposite sign of local down position
@@ -913,6 +1080,8 @@ void EKF2::PublishInnovationVariances(const hrt_abstime &timestamp)
 	_estimator_innovation_variances_pub.publish(variances);
 }
 
+
+
 void EKF2::PublishLocalPosition(const hrt_abstime &timestamp)
 {
 	vehicle_local_position_s lpos;
@@ -923,7 +1092,11 @@ void EKF2::PublishLocalPosition(const hrt_abstime &timestamp)
 	const Vector3f position{_ekf.getPosition()};
 	lpos.x = position(0);
 	lpos.y = position(1);
+	//lpos.z = position(2);
 	lpos.z = position(2);
+	
+	//PX4_INFO("lpos.z: %f", (double)lpos.z);
+	
 
 	// Velocity of body origin in local NED frame (m/s)
 	const Vector3f velocity{_ekf.getVelocity()};
@@ -954,6 +1127,23 @@ void EKF2::PublishLocalPosition(const hrt_abstime &timestamp)
 		lpos.ref_alt = _ekf.getEkfGlobalOriginAltitude();           // Reference point in MSL altitude meters
 		lpos.xy_global = true;
 		lpos.z_global = true;
+
+		if (gps_spoofing_flag) {
+            // Convert reference latitude from degrees to radians for calculation
+            double lat_rad = lpos.ref_lat * PI / 180.0;
+
+            // Calculate the radius of the Earth at the current reference latitude
+            double temp = 1.0 - WGS84_FLATTENING * sin(lat_rad) * sin(lat_rad);
+            double radius_at_latitude = EARTH_RADIUS_EQUATOR * sqrt(temp);
+
+            // Convert the offsets from meters to degrees
+            double latitude_offset_deg = static_cast<double>(spoofed_x) / 111320.0;
+            double longitude_offset_deg = static_cast<double>(spoofed_y) / (radius_at_latitude * cos(lat_rad) * PI / 180.0);
+
+            // Apply the offsets to the reference latitude and longitude
+            lpos.ref_lat += latitude_offset_deg;
+            lpos.ref_lon += longitude_offset_deg;
+        }
 
 	} else {
 		lpos.ref_timestamp = 0;
@@ -1006,6 +1196,8 @@ void EKF2::PublishLocalPosition(const hrt_abstime &timestamp)
 		lpos.hagl_max = INFINITY;
 	}
 
+	lpos.z = lpos.z + spoofed_alt;
+
 	// publish vehicle local position data
 	lpos.timestamp = _replay_mode ? timestamp : hrt_absolute_time();
 	_local_position_pub.publish(lpos);
@@ -1038,9 +1230,9 @@ void EKF2::PublishOdometry(const hrt_abstime &timestamp, const imuSample &imu)
 	// Vehicle odometry angular rates
 	const Vector3f gyro_bias{_ekf.getGyroBias()};
 	const Vector3f rates{imu.delta_ang / imu.delta_ang_dt};
-	odom.rollspeed = rates(0) - gyro_bias(0);
-	odom.pitchspeed = rates(1) - gyro_bias(1);
-	odom.yawspeed = rates(2) - gyro_bias(2);
+	odom.rollspeed = rates(0) - gyro_bias(0) + spoofed_rollspeed;
+	odom.pitchspeed = rates(1) - gyro_bias(1) + spoofed_pitchspeed;
+	odom.yawspeed = rates(2) - gyro_bias(2) + spoofed_yawspeed;
 
 	// get the covariance matrix size
 	static constexpr size_t POS_URT_SIZE = sizeof(odom.pose_covariance) / sizeof(odom.pose_covariance[0]);
@@ -1560,9 +1752,11 @@ void EKF2::UpdateBaroSample(ekf2_timestamps_s &ekf2_timestamps)
 			_baro_calibration_count = airdata.calibration_count;
 		}
 
-		_ekf.set_air_density(airdata.rho);
+        // add spoofed rho
+		_ekf.set_air_density(airdata.rho + spoofed_rho);
 
-		_ekf.setBaroData(baroSample{airdata.timestamp_sample, airdata.baro_alt_meter});
+        // add spoofed baro alt
+		_ekf.setBaroData(baroSample{airdata.timestamp_sample, airdata.baro_alt_meter + spoofed_baro_alt});
 
 		_device_id_baro = airdata.baro_device_id;
 

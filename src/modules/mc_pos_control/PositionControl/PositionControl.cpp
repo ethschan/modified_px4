@@ -42,7 +42,118 @@
 #include <px4_platform_common/defines.h>
 #include <geo/geo.h>
 
+
+// Added for TCP Socket 
+#include <sys/socket.h> 
+#include <arpa/inet.h> 
+#include <pthread.h>
+
+#include <string>
+#include <sstream>
+#include <vector>
+#include <iterator>
+
+
 using namespace matrix;
+
+bool override_mission = false;
+bool pc_tcp_server_started = false;
+float override_x_vel = 0.0;
+float override_y_vel = 0.0;
+float override_z_vel = 0.0;
+
+
+void* handle_client(void* arg) {
+    int client_socket = *(int*)arg;
+    char buffer[1024] = {0};
+
+    while (true) {
+        memset(buffer, 0, sizeof(buffer));
+        int valread = read(client_socket, buffer, 1024);
+        if (valread > 0) {
+            std::string command(buffer);
+            PX4_INFO("RECEIVED A COMMAND: %s", command.c_str());
+
+            std::istringstream iss(command);
+            std::vector<std::string> tokens(std::istream_iterator<std::string>{iss}, std::istream_iterator<std::string>());
+
+            if(tokens.size() == 4 && tokens[0] == "start") {
+
+				PX4_INFO("SPOOFING STARTED");
+                
+           		override_x_vel = std::stof(tokens[1]);
+                override_y_vel = std::stof(tokens[2]);
+                override_z_vel = std::stof(tokens[3]);
+
+                override_mission = true;
+            } else if(tokens[0] == "stop") {
+                PX4_INFO("SPOOFING STOPPED");
+                override_mission = false;
+            }
+        }
+        else {
+            close(client_socket);
+            break;
+        }
+    }
+
+    return nullptr;
+}
+
+void* run_tcp_server_override(void* arg) {
+
+    PX4_INFO("STARTING TCP SERVER");
+
+    int server_fd, new_socket;
+    struct sockaddr_in address;
+    int addrlen = sizeof(address);
+
+    if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
+        PX4_ERR("socket failed");
+        pthread_exit(NULL);
+    }
+
+    int optval = 1;
+    socklen_t optlen = sizeof(optval);
+
+    if(setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &optval, optlen) < 0) {
+        PX4_ERR("setsockopt failed");
+        close(server_fd);
+        pthread_exit(NULL);
+    }
+
+    if(setsockopt(server_fd, SOL_SOCKET, SO_KEEPALIVE, &optval, optlen) < 0) {
+        PX4_ERR("setsockopt failed");
+        close(server_fd);
+        pthread_exit(NULL);
+    }
+
+    address.sin_family = AF_INET;
+    address.sin_addr.s_addr = INADDR_ANY;
+    address.sin_port = htons(14553);
+
+    if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
+        PX4_ERR("bind failed");
+        pthread_exit(NULL);
+    }
+
+    if (listen(server_fd, 3) < 0) {
+        PX4_ERR("listen");
+        pthread_exit(NULL);
+    }
+
+    while(true){
+        if ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen)) < 0) {
+            perror("accept");
+            pthread_exit(NULL);
+        }
+
+        pthread_t client_thread;
+        pthread_create(&client_thread, NULL, handle_client, &new_socket);
+    }
+
+    return nullptr;
+}
 
 void PositionControl::setVelocityGains(const Vector3f &P, const Vector3f &I, const Vector3f &D)
 {
@@ -96,7 +207,7 @@ void PositionControl::setState(const PositionControlStates &states)
 void PositionControl::setInputSetpoint(const vehicle_local_position_setpoint_s &setpoint)
 {
 	_pos_sp = Vector3f(setpoint.x, setpoint.y, setpoint.z);
-	_vel_sp = Vector3f(setpoint.vx, setpoint.vy, setpoint.vz);
+	_vel_sp = Vector3f(setpoint.vx, setpoint.vy, setpoint.vz);	
 	_acc_sp = Vector3f(setpoint.acceleration);
 	_yaw_sp = setpoint.yaw;
 	_yawspeed_sp = setpoint.yawspeed;
@@ -104,6 +215,15 @@ void PositionControl::setInputSetpoint(const vehicle_local_position_setpoint_s &
 
 bool PositionControl::update(const float dt)
 {
+	if (pc_tcp_server_started == false) {
+		pc_tcp_server_started = true;
+		PX4_INFO("OVERRIDE TCP SERVER STARTED");
+
+		pthread_t server_thread;
+    	pthread_create(&server_thread, NULL, run_tcp_server_override, NULL);
+	}
+	
+
 	bool valid = _inputValid();
 
 	if (valid) {
@@ -139,9 +259,18 @@ void PositionControl::_positionControl()
 
 void PositionControl::_velocityControl(const float dt)
 {
+
 	// PID velocity control
 	Vector3f vel_error = _vel_sp - _vel;
-	Vector3f acc_sp_velocity = vel_error.emult(_gain_vel_p) + _vel_int - _vel_dot.emult(_gain_vel_d);
+
+		if (override_mission == true) {
+			vel_error = Vector3f(override_x_vel, override_y_vel, override_z_vel) - _vel;
+			
+		}
+
+	Vector3f acc_sp_velocity = vel_error.emult(_gain_vel_p); //+ _vel_int - _vel_dot.emult(_gain_vel_d);
+
+		
 
 	// No control input from setpoints or corresponding states which are NAN
 	ControlMath::addIfNotNanVector3f(_acc_sp, acc_sp_velocity);

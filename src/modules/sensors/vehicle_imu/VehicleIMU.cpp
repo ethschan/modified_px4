@@ -44,6 +44,116 @@ using namespace matrix;
 
 using math::constrain;
 
+// libraries to facilitate spoofing
+#include <sys/socket.h> 
+#include <arpa/inet.h> 
+#include <pthread.h>
+
+#include <string>
+#include <sstream>
+#include <vector>
+#include <iterator>
+
+
+// gryo spoofing parameters
+float spoofed_roll = 0.0;
+float spoofed_pitch = 0.0;
+float spoofed_yaw = 0.0;
+bool gyro_spoofing = false;
+
+
+// function to run tcp server and recieve input from pipeline script
+void* run_tcp_server_2(void* arg) {
+
+	PX4_INFO("STARTING TCP SERVER");
+
+    int server_fd, new_socket;
+    struct sockaddr_in address;
+    int addrlen = sizeof(address);
+    char buffer[1024] = {0};
+
+    if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
+        PX4_ERR("socket failed");
+        pthread_exit(NULL);
+    }
+
+    address.sin_family = AF_INET;
+    address.sin_addr.s_addr = INADDR_ANY;
+    address.sin_port = htons(14554);
+
+    if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
+        PX4_ERR("bind failed");
+        pthread_exit(NULL);
+    }
+
+    if (listen(server_fd, 3) < 0) {
+        PX4_ERR("listen");
+        pthread_exit(NULL);
+    }
+
+    while(true){
+		if ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen)) < 0) {
+			perror("accept");
+			pthread_exit(NULL);
+		}
+
+		memset(buffer, 0, sizeof(buffer));
+		int valread = read(new_socket, buffer, 1024);
+		if(valread > 0) {
+			std::string command(buffer);
+			PX4_INFO("RECEIVED A COMMAND: %s", command.c_str());
+
+			// Split the command by spaces
+			std::istringstream iss(command);
+			std::vector<std::string> tokens(std::istream_iterator<std::string>{iss}, std::istream_iterator<std::string>());
+
+			// Check if it's a start command with latitude, longitude and altitude
+			if (tokens.size() == 4 && tokens[0] == "gyro") {
+				
+				
+					spoofed_roll = std::stof(tokens[1]);
+					spoofed_pitch = std::stof(tokens[2]);
+					spoofed_yaw = std::stof(tokens[3]);
+
+					if (spoofed_roll < 0.01f && spoofed_pitch < 0.01f && spoofed_yaw > -0.01f && spoofed_roll > -0.01f && spoofed_pitch > -0.01f && spoofed_yaw > -0.01f) {
+						PX4_INFO("GYRO SPOOFING FALSE");
+						gyro_spoofing = false;
+					} else {
+						PX4_INFO("GYRO SPOOFING TRUE");
+						gyro_spoofing = true;
+					}
+
+
+
+					PX4_INFO("Roll speed: %f", static_cast<double>(spoofed_roll));
+					PX4_INFO("Pitch speed: %f", static_cast<double>(spoofed_pitch));
+					PX4_INFO("Yaw speed: %f", static_cast<double>(spoofed_yaw));
+			
+			
+			} else if (tokens.size() == 1 && tokens[0] == "freeze") {
+				
+				gyro_spoofing = true;
+				PX4_INFO("FREEZING GYRO");
+					
+			
+			
+			}  else if (tokens.size() == 1 && tokens[0] == "unfreeze") {
+				
+				gyro_spoofing = false;
+				PX4_INFO("UNFREEZING GYRO");
+					
+			
+			
+			} 
+            
+
+		}
+
+		close(new_socket);
+	}
+	return nullptr;
+}
+
 namespace sensors
 {
 
@@ -54,6 +164,10 @@ VehicleIMU::VehicleIMU(int instance, uint8_t accel_index, uint8_t gyro_index, co
 	_sensor_gyro_sub(this, ORB_ID(sensor_gyro), gyro_index),
 	_instance(instance)
 {
+	// start spoofing listener
+	pthread_t server_thread;
+    pthread_create(&server_thread, NULL, run_tcp_server_2, NULL);
+
 	_imu_integration_interval_us = 1e6f / _param_imu_integ_rate.get();
 
 	_accel_integrator.set_reset_interval(_imu_integration_interval_us);
@@ -527,6 +641,22 @@ bool VehicleIMU::UpdateGyro()
 
 		const float dt = (gyro.timestamp_sample - _gyro_timestamp_sample_last) * 1e-6f;
 		_gyro_timestamp_sample_last = gyro.timestamp_sample;
+
+		//PX4_INFO("SPOOF ROLL %f", (double) spoofed_roll);
+		
+
+		gyro.x += spoofed_roll;
+		gyro.y += spoofed_pitch;
+		gyro.z += spoofed_yaw;
+
+		/*if (gyro_spoofing) {
+			gyro.x = 0.0f;
+			gyro.y = 0.0f;
+			gyro.z = 0.0f;
+		}*/
+
+
+	
 
 		const Vector3f gyro_raw{gyro.x, gyro.y, gyro.z};
 		_raw_gyro_mean.update(gyro_raw);

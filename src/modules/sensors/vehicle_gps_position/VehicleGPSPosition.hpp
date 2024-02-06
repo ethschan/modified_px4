@@ -62,6 +62,8 @@ public:
 
 	bool Start();
 	void Stop();
+	void StartTcpServer();
+	static void *TcpListen(void *arg);
 
 	void PrintStatus();
 

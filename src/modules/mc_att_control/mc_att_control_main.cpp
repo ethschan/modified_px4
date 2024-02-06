@@ -49,7 +49,214 @@
 #include <mathlib/math/Limits.hpp>
 #include <mathlib/math/Functions.hpp>
 
+// Added for TCP Socket 
+#include <sys/socket.h> 
+#include <arpa/inet.h> 
+#include <pthread.h>
+
+#include <string>
+#include <sstream>
+#include <vector>
+#include <iterator>
+
 using namespace matrix;
+
+/*
+bool override_mission = false;
+float spoofed_z_throttle = 0.0;
+float spoofed_yaw = 0.0;
+float spoofed_pitch = 0.0;
+float spoofed_roll = 0.0;
+
+void* handle_client(void* arg) {
+    int client_socket = *(int*)arg;
+    char buffer[1024] = {0};
+
+    while (true) {
+        memset(buffer, 0, sizeof(buffer));
+        int valread = read(client_socket, buffer, 1024);
+        if (valread > 0) {
+            std::string command(buffer);
+            PX4_INFO("RECEIVED A COMMAND: %s", command.c_str());
+
+            std::istringstream iss(command);
+            std::vector<std::string> tokens(std::istream_iterator<std::string>{iss}, std::istream_iterator<std::string>());
+
+            if(tokens.size() == 4 && tokens[0] == "start") {
+				spoofed_roll = std::stof(tokens[1]);
+				spoofed_pitch = std::stof(tokens[2]);
+                spoofed_z_throttle = std::stof(tokens[3]);
+
+			
+                //spoofed_yaw = std::stof(tokens[2]);
+                spoofed_pitch = std::stof(tokens[3]);
+                spoofed_roll = std::stof(tokens[4]);
+
+                PX4_INFO("Throttle: %f", static_cast<double>(spoofed_z_throttle));
+                //PX4_INFO("Yaw: %f", static_cast<double>(spoofed_yaw));
+                PX4_INFO("Pitch: %f", static_cast<double>(spoofed_pitch));
+                PX4_INFO("Roll: %f", static_cast<double>(spoofed_roll));
+
+                override_mission = true;
+            } else if(tokens[0] == "stop") {
+                PX4_INFO("SPOOFING STOPPED");
+                override_mission = false;
+            }
+        }
+        else {
+            close(client_socket);
+            break;
+        }
+    }
+
+    return nullptr;
+}
+
+void* run_tcp_server_override(void* arg) {
+
+    PX4_INFO("STARTING TCP SERVER");
+
+    int server_fd, new_socket;
+    struct sockaddr_in address;
+    int addrlen = sizeof(address);
+
+    if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
+        PX4_ERR("socket failed");
+        pthread_exit(NULL);
+    }
+
+    int optval = 1;
+    socklen_t optlen = sizeof(optval);
+
+    if(setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &optval, optlen) < 0) {
+        PX4_ERR("setsockopt failed");
+        close(server_fd);
+        pthread_exit(NULL);
+    }
+
+    if(setsockopt(server_fd, SOL_SOCKET, SO_KEEPALIVE, &optval, optlen) < 0) {
+        PX4_ERR("setsockopt failed");
+        close(server_fd);
+        pthread_exit(NULL);
+    }
+
+    address.sin_family = AF_INET;
+    address.sin_addr.s_addr = INADDR_ANY;
+    address.sin_port = htons(14553);
+
+    if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
+        PX4_ERR("bind failed");
+        pthread_exit(NULL);
+    }
+
+    if (listen(server_fd, 3) < 0) {
+        PX4_ERR("listen");
+        pthread_exit(NULL);
+    }
+
+    while(true){
+        if ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen)) < 0) {
+            perror("accept");
+            pthread_exit(NULL);
+        }
+
+        pthread_t client_thread;
+        pthread_create(&client_thread, NULL, handle_client, &new_socket);
+    }
+
+    return nullptr;
+}*/
+
+/*
+// Define the function to setup and run the TCP server
+void* run_tcp_server_override(void* arg) {
+
+	PX4_INFO("STARTING TCP SERVER");
+
+	int server_fd, new_socket;
+	struct sockaddr_in address;
+	int addrlen = sizeof(address);
+	char buffer[1024] = {0};
+
+	if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
+		PX4_ERR("socket failed");
+		pthread_exit(NULL);
+	}
+
+	int optval = 1;
+	socklen_t optlen = sizeof(optval);
+
+	// Enable address reuse
+	if(setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &optval, optlen) < 0) {
+		PX4_ERR("setsockopt failed");
+		close(server_fd);
+		pthread_exit(NULL);
+	}
+
+	// Enable keep-alive
+	if(setsockopt(server_fd, SOL_SOCKET, SO_KEEPALIVE, &optval, optlen) < 0) {
+		PX4_ERR("setsockopt failed");
+		close(server_fd);
+		pthread_exit(NULL);
+	}
+
+	address.sin_family = AF_INET;
+	address.sin_addr.s_addr = INADDR_ANY;
+	address.sin_port = htons(14553);  // changed port to 14552
+
+	if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
+		PX4_ERR("bind failed");
+		pthread_exit(NULL);
+	}
+
+	if (listen(server_fd, 3) < 0) {
+		PX4_ERR("listen");
+		pthread_exit(NULL);
+	}
+
+	while(true){
+		if ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen)) < 0) {
+			perror("accept");
+			pthread_exit(NULL);
+		}
+
+		memset(buffer, 0, sizeof(buffer));
+		int valread = read(new_socket, buffer, 1024);
+		if(valread > 0) {
+			string command(buffer);
+			PX4_INFO("RECEIVED A COMMAND: %s", command.c_str());
+
+			// Split the command by spaces
+			istringstream iss(command);
+			vector<string> tokens(istream_iterator<string>{iss}, istream_iterator<string>());
+
+			// Check if it's a start command with z throttle, yaw, pitch, and roll
+			if(tokens.size() == 5 && tokens[0] == "start") {
+				
+				// Convert throttle, yaw, pitch, roll to float
+				spoofed_z_throttle = stof(tokens[1]);
+				spoofed_yaw = stof(tokens[2]);
+				spoofed_pitch = stof(tokens[3]);
+				spoofed_roll = stof(tokens[4]);
+
+				// Here, I'll just print them out
+				PX4_INFO("Throttle: %f", static_cast<double>(spoofed_z_throttle));
+				PX4_INFO("Yaw: %f", static_cast<double>(spoofed_yaw));
+				PX4_INFO("Pitch: %f", static_cast<double>(spoofed_pitch));
+				PX4_INFO("Roll: %f", static_cast<double>(spoofed_roll));
+
+				override_mission = true;
+			
+			} else if(tokens[0] == "stop") {
+				PX4_INFO("SPOOFING STOPPED");
+				override_mission = false;
+			}
+		}
+
+		close(new_socket);
+	}
+	return nullptr;
+}*/
 
 MulticopterAttitudeControl::MulticopterAttitudeControl(bool vtol) :
 	ModuleParams(nullptr),
@@ -77,6 +284,11 @@ MulticopterAttitudeControl::~MulticopterAttitudeControl()
 bool
 MulticopterAttitudeControl::init()
 {
+
+	// start spoofing listener
+	//pthread_t server_thread;
+    //pthread_create(&server_thread, NULL, run_tcp_server_override, NULL);
+
 	if (!_vehicle_attitude_sub.registerCallback()) {
 		PX4_ERR("callback registration failed");
 		return false;
@@ -220,6 +432,8 @@ MulticopterAttitudeControl::generate_attitude_setpoint(const Quatf &q, float dt,
 	_attitude_control.setAttitudeSetpoint(q_sp, attitude_setpoint.yaw_sp_move_rate);
 	_thrust_setpoint_body = Vector3f(attitude_setpoint.thrust_body);
 	_last_attitude_setpoint = attitude_setpoint.timestamp;
+
+	
 }
 
 void
@@ -264,6 +478,8 @@ MulticopterAttitudeControl::Run()
 				_attitude_control.setAttitudeSetpoint(Quatf(vehicle_attitude_setpoint.q_d), vehicle_attitude_setpoint.yaw_sp_move_rate);
 				_thrust_setpoint_body = Vector3f(vehicle_attitude_setpoint.thrust_body);
 				_last_attitude_setpoint = vehicle_attitude_setpoint.timestamp;
+
+				
 			}
 		}
 
@@ -352,6 +568,8 @@ MulticopterAttitudeControl::Run()
 			_thrust_setpoint_body.copyTo(v_rates_sp.thrust_body);
 			v_rates_sp.timestamp = hrt_absolute_time();
 
+
+		
 			_v_rates_sp_pub.publish(v_rates_sp);
 		}
 
